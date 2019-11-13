@@ -22,6 +22,14 @@ import org.joda.time.Duration;
 import java.io.Serializable;
 import java.sql.PreparedStatement;
 
+/*
+    TODO : Externalise parameters
+           Code refactoring
+           Exception Handling
+           Error Tuple processing
+           CSV overwrite issue
+           Downgrade beam sdk
+ */
 @Slf4j
 public class DataflowPipelineBuilder implements Serializable {
 
@@ -103,7 +111,7 @@ public class DataflowPipelineBuilder implements Serializable {
     );
 
 
-    log.debug("processed successfully.");
+    log.debug("Data processed successfully.");
     return pipeline;
   }
 }
