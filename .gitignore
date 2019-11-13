@@ -8,7 +8,10 @@
 *.ctxt
 
 
-#directories
+#files to ignore
+*.csv
+
+#directories to ignore
 target
 .idea
 .temp-beam
