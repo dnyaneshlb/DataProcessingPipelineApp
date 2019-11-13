@@ -1,5 +1,6 @@
 package com.ikea.bigdata.dataflow.pipeline;
 
+import com.ikea.bigdata.common.Constants;
 import com.ikea.bigdata.dataflow.pipeline.options.DataPipelineOptions;
 import com.ikea.bigdata.exception.DataPipelineException;
 import com.ikea.bigdata.protos.OrderProtos;
@@ -36,13 +37,13 @@ public class DataflowPipelineBuilder implements Serializable {
   public Pipeline createDataPipeline(String[] args) {
     log.debug("create data pipeline function is started");
 
-    final DataPipelineOptions options =
-        PipelineOptionsFactory.fromArgs(args).withValidation().as(DataPipelineOptions.class);
+    final DataPipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation().as(DataPipelineOptions.class);
 
     //TODO : Do we need to this manual validation? can it be part of Pipeline options?
     final String projectName = options.getProject();
     if (StringUtils.isEmpty(projectName)) {
-      throw new DataPipelineException("Project is missing from pipeline options.");
+        log.error("Project is missing from pipeline options.");
+        throw new DataPipelineException("Project is missing from pipeline options.");
     }
 
     // Create the Pipeline with the specified options
@@ -53,37 +54,36 @@ public class DataflowPipelineBuilder implements Serializable {
     coderRegistry.registerCoderForClass(OrderProtos.Order.class, coder);
 
     //transformations starts here
+    log.debug("Started processing events from pubsub");
     PCollection<OrderProtos.Order> events = pipeline
             .apply("Read Pubsub Events", PubsubIO.readProtos(OrderProtos.Order.class)
                     .fromSubscription(options.getEventSubscription()))
             .setCoder(coder);
 
-    events.apply("Save to Database",
+    log.debug("Saving event to database");
+    events.apply("Save Event to Database",
             JdbcIO.<OrderProtos.Order>write().withDataSourceConfiguration(JdbcIO.DataSourceConfiguration.create(
-                    "org.postgresql.Driver", "jdbc:postgresql://localhost:5432/postgres")
-                    .withUsername("postgres")
-                    .withPassword("postgres"))
-                    .withStatement("insert into Orders values(?,?,?,?)")
-                    .withPreparedStatementSetter(new JdbcIO.PreparedStatementSetter<OrderProtos.Order>() {
-                      @Override
-                      public void setParameters(OrderProtos.Order order, PreparedStatement query) throws Exception {
-                        query.setString(1,order.getId());
-                        query.setString(2, order.getEmail());
-                        query.setString(3, order.getShippingaddress());
-                        query.setInt(4,order.getCost());
-                      }
-                    })
-    );
+                    Constants.POSTGRESS_DRIVER_CLASS, options.getDatabaseURL())
+                    .withUsername(options.getDatabaseUserName())
+                    .withPassword(options.getDatabasePassword()))
+                    .withStatement(Constants.INSERT_ORDER_QUERY)
+                    .withPreparedStatementSetter((OrderProtos.Order order, PreparedStatement query) -> {
+                        query.setInt(1, Integer.parseInt(order.getId()));
+                        query.setInt(2,order.getCost());
+                        query.setString(3, order.getEmail());
+                        query.setString(4, order.getShippingaddress());
+                    }));
 
 
+    log.debug("Emitting data in CSV format.");
     events.apply(Window.<OrderProtos.Order>into(
-            FixedWindows.of(Duration.standardMinutes(2)))
+            FixedWindows.of(Duration.standardMinutes(options.getWindowSize())))
             .triggering(
                     Repeatedly.forever(
                             AfterFirst.of(
                                     AfterPane.elementCountAtLeast(10),
                                     AfterProcessingTime.pastFirstElementInPane()
-                                            .plusDelayOf(Duration.standardSeconds(20)))))
+                                            .plusDelayOf(Duration.standardSeconds(options.getLeastElementsInWindow())))))
             .withAllowedLateness(Duration.ZERO)
             .discardingFiredPanes())
     .apply("Convert to String", MapElements.via(new SimpleFunction<OrderProtos.Order, String>() {
@@ -91,11 +91,11 @@ public class DataflowPipelineBuilder implements Serializable {
         public String apply(OrderProtos.Order order){
           StringBuilder orderString = new StringBuilder();
           orderString.append(order.getId())
-                  .append(",")
+                  .append(Constants.SEPERATOR_COMMA)
                   .append(order.getShippingaddress())
-                  .append(",")
+                  .append(Constants.SEPERATOR_COMMA)
                   .append(order.getCost())
-                  .append(",")
+                  .append(Constants.SEPERATOR_COMMA)
                   .append(order.getEmail());
           return orderString.toString();
         }
@@ -103,11 +103,12 @@ public class DataflowPipelineBuilder implements Serializable {
     .apply(TextIO
             .write()
             .withWindowedWrites()
-            .withHeader("id,email,Shipping Address,cost")
-            .withShardNameTemplate("template")
-            .to("orders")
-            .withNumShards(1)
-            .withSuffix(".csv")
+            .withHeader(Constants.CSV_HEADER_ID + Constants.CSV_HEADER_EMAIL
+                    + Constants.CSV_HEADER_SHIPPING_ADDRESS + Constants.CSV_HEADER_COST)
+            .withShardNameTemplate(Constants.NAME_TEMPLATE)
+            .to(Constants.FILE_NAME_SUFFIX)
+            .withNumShards(Constants.NUM_OF_SHARDS)
+            .withSuffix(Constants.FILE_TYPE_SUFFIX)
     );
 
 
