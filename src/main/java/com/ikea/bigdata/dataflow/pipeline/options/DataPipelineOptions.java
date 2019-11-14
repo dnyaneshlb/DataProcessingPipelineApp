@@ -7,12 +7,6 @@ import org.apache.beam.sdk.options.Validation;
 
 public interface DataPipelineOptions extends GcpOptions {
 
-    @Validation.Required
-    @Description("Topic to read payload from ingestion queue")
-    String getOrderEventsTopic();
-    void setOrderEventsTopic(String orderEventsTopic);
-
-
     @Default.Integer(2)
     @Description("Size of window for emitting results")
     int getWindowSize();
