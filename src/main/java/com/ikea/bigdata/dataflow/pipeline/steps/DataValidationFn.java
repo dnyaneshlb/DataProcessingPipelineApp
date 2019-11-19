@@ -13,8 +13,10 @@ public class DataValidationFn extends DoFn<OrderProtos.Order, OrderProtos.Order>
     @ProcessElement
     public void processElement(@Element OrderProtos.Order order, ProcessContext out) {
         if (Objects.nonNull(order)) {
-            if (!StringUtils.isEmpty(order.getId()) && !StringUtils.isEmpty(order.getShippingaddress())
-                    && !StringUtils.isEmpty(order.getEmail()) && order.getCost() > 0) {
+            if (!StringUtils.isEmpty(order.getId())
+                    && !StringUtils.isEmpty(order.getShippingaddress())
+                    && !StringUtils.isEmpty(order.getEmail())
+                    && (order.getCost() > 0 && order.getCost() < 8000)) {
                 out.output(Constants.VALID_DATA, order);
             } else {
                 log.error("Data received is corrupt. Sending it back to dead letter queue for reprocessing");

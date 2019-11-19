@@ -7,7 +7,7 @@ import org.apache.beam.sdk.options.Validation;
 
 public interface DataPipelineOptions extends GcpOptions {
 
-    @Default.Integer(2)
+    @Default.Integer(1)
     @Description("Size of window for emitting results")
     int getWindowSize();
     void setWindowSize(int windowSize);

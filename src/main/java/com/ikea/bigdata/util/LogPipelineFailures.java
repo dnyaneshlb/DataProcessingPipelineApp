@@ -1,6 +1,6 @@
 package com.ikea.bigdata.util;
 
-import com.ikea.bigdata.dataflow.pipeline.steps.FailureMetaData;
+import com.ikea.bigdata.exception.FailureMetaData;
 import org.apache.beam.sdk.coders.SerializableCoder;
 import org.apache.beam.sdk.extensions.jackson.AsJsons;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;

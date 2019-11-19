@@ -1,6 +1,6 @@
 package com.ikea.bigdata.util;
 
-import com.ikea.bigdata.dataflow.pipeline.steps.FailureMetaData;
+import com.ikea.bigdata.exception.FailureMetaData;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.beam.vendor.guava.v20_0.com.google.common.base.Preconditions;

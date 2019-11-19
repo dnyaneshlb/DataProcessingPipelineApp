@@ -2,10 +2,12 @@ package com.ikea.bigdata.dataflow.pipeline.steps;
 
 import com.ikea.bigdata.common.Constants;
 import com.ikea.bigdata.protos.OrderProtos;
+import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.beam.sdk.transforms.DoFn;
 
 @Slf4j
+@Builder
 public class ListConverterFn extends DoFn<OrderProtos.Order, String> {
     @ProcessElement
     public void processElement(@Element OrderProtos.Order order, OutputReceiver<String> out) {

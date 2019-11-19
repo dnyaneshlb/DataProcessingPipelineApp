@@ -1,9 +1,7 @@
-package com.ikea.bigdata.dataflow.pipeline.steps;
+package com.ikea.bigdata.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
