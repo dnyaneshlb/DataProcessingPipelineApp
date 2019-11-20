@@ -11,6 +11,7 @@ public class Constants {
      */
     public static final TupleTag<OrderProtos.Order> VALID_DATA = new TupleTag<OrderProtos.Order>(){};
     public static final TupleTag<OrderProtos.Order> INVALID_DATA = new TupleTag<OrderProtos.Order>(){};
+    public static final String ATTRIBUTE_ID = "Order";
 
     private Constants(){
 

@@ -21,11 +21,9 @@ import org.apache.beam.sdk.values.PCollectionTuple;
 import org.apache.beam.sdk.values.TupleTagList;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.Duration;
-import org.joda.time.Instant;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
-
 /*
     TODO :
            Exception Handling
@@ -68,6 +66,7 @@ public class DataflowPipelineBuilder implements Serializable {
         try {
             events = pipeline
                     .apply("Read Pubsub Events", PubsubIO.readProtos(OrderProtos.Order.class)
+                            .withIdAttribute(Constants.ATTRIBUTE_ID)
                             .fromSubscription(options.getEventSubscription()))
                     .apply(Window.<OrderProtos.Order>into(
                             FixedWindows.of(Duration.standardMinutes(options.getWindowSize())))
@@ -109,7 +108,6 @@ public class DataflowPipelineBuilder implements Serializable {
                         .withNumShards(Constants.NUM_OF_SHARDS)
                         .withSuffix(Constants.FILE_TYPE_SUFFIX)
                 );
-        System.out.println("csv write complete at " + Instant.now());
     }
 
 
@@ -157,7 +155,6 @@ public class DataflowPipelineBuilder implements Serializable {
                                     .withResults());
 
 
-            System.out.println("database write complete at " + Instant.now());
             processBadData(taggedEvents, options);
             return dbWriteResults;
         } catch (Exception e) {
