@@ -43,5 +43,9 @@ windowSize (default is 1 min)
 ````sh
 leastElementsInWindow (default is 10)
 ````
-    
+   - Under resources, there is a protobuf schema file. To compile and generate code from it use [Protoc](https://developers.google.com/protocol-buffers/docs/proto3#generating) compiler and run
+````sh
+protoc --proto_path=IMPORT_PATH --cpp_out=DST_DIR --java_out=DST_DIR --python_out=DST_DIR --go_out=DST_DIR --ruby_out=DST_DIR --objc_out=DST_DIR --csharp_out=DST_DIR path/to/file.proto
+````
+More information on protobuf 3 available at https://developers.google.com/protocol-buffers/docs/proto3   
  
