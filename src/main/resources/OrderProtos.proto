@@ -1,14 +1,22 @@
-syntax = "proto2";
+syntax = "proto3";
 
-package bigdata.workshop;
+/*
+ * This is namespace for protobuf types we are creating in this file
+ */
+package com.ikea.bigdata.protos;
 
-option java_package = "com.ikea.bigdata";
+/*
+ * this is java package to be used for generated java classes.
+ */
+option java_package = "com.ikea.bigdata.protos";
 option java_outer_classname = "OrderProtos";
 
 message Order {
-  required string id = 1;
-  required int32 cost = 2;
-  optional string email = 3;
-  required string shippingaddress = 4;	
+  string modelNumber = 1;
+  int32 cost = 2;
+  string email = 3;
+  string shippingAddress = 4;
+  string mobileNumber = 5;
+
 }
 

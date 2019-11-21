@@ -15,90 +15,60 @@ public final class OrderProtos {
                 (com.google.protobuf.ExtensionRegistryLite) registry);
     }
     public interface OrderOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:bigdata.workshop.Order)
+            // @@protoc_insertion_point(interface_extends:com.ikea.bigdata.protos.Order)
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>required string id = 1;</code>
+         * <code>string modelNumber = 1;</code>
          */
-        boolean hasId();
+        java.lang.String getModelNumber();
         /**
-         * <code>required string id = 1;</code>
-         */
-        String getId();
-        /**
-         * <code>required string id = 1;</code>
+         * <code>string modelNumber = 1;</code>
          */
         com.google.protobuf.ByteString
-        getIdBytes();
+        getModelNumberBytes();
 
         /**
-         * <code>required int32 cost = 2;</code>
-         */
-        boolean hasCost();
-        /**
-         * <code>required int32 cost = 2;</code>
+         * <code>int32 cost = 2;</code>
          */
         int getCost();
 
         /**
-         * <code>optional string email = 3;</code>
+         * <code>string email = 3;</code>
          */
-        boolean hasEmail();
+        java.lang.String getEmail();
         /**
-         * <code>optional string email = 3;</code>
-         */
-        String getEmail();
-        /**
-         * <code>optional string email = 3;</code>
+         * <code>string email = 3;</code>
          */
         com.google.protobuf.ByteString
         getEmailBytes();
 
         /**
-         * <code>required string shippingaddress = 4;</code>
+         * <code>string shippingAddress = 4;</code>
          */
-        boolean hasShippingaddress();
+        java.lang.String getShippingAddress();
         /**
-         * <code>required string shippingaddress = 4;</code>
-         */
-        String getShippingaddress();
-        /**
-         * <code>required string shippingaddress = 4;</code>
+         * <code>string shippingAddress = 4;</code>
          */
         com.google.protobuf.ByteString
-        getShippingaddressBytes();
+        getShippingAddressBytes();
 
         /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
+         * <code>string mobileNumber = 5;</code>
          */
-        java.util.List<Order.Product>
-        getProductsList();
+        java.lang.String getMobileNumber();
         /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
+         * <code>string mobileNumber = 5;</code>
          */
-        com.ikea.bigdata.protos.OrderProtos.Order.Product getProducts(int index);
-        /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-         */
-        int getProductsCount();
-        /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-         */
-        java.util.List<? extends Order.ProductOrBuilder>
-        getProductsOrBuilderList();
-        /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-         */
-        com.ikea.bigdata.protos.OrderProtos.Order.ProductOrBuilder getProductsOrBuilder(
-                int index);
+        com.google.protobuf.ByteString
+        getMobileNumberBytes();
     }
     /**
-     * Protobuf type {@code bigdata.workshop.Order}
+     * Protobuf type {@code com.ikea.bigdata.protos.Order}
      */
     public  static final class Order extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:bigdata.workshop.Order)
+            // @@protoc_insertion_point(message_implements:com.ikea.bigdata.protos.Order)
             OrderOrBuilder {
         private static final long serialVersionUID = 0L;
         // Use Order.newBuilder() to construct.
@@ -106,14 +76,14 @@ public final class OrderProtos {
             super(builder);
         }
         private Order() {
-            id_ = "";
+            modelNumber_ = "";
             cost_ = 0;
             email_ = "";
-            shippingaddress_ = "";
-            products_ = java.util.Collections.emptyList();
+            shippingAddress_ = "";
+            mobileNumber_ = "";
         }
 
-        @Override
+        @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
             return this.unknownFields;
@@ -124,7 +94,7 @@ public final class OrderProtos {
                 throws com.google.protobuf.InvalidProtocolBufferException {
             this();
             if (extensionRegistry == null) {
-                throw new NullPointerException();
+                throw new java.lang.NullPointerException();
             }
             int mutable_bitField0_ = 0;
             com.google.protobuf.UnknownFieldSet.Builder unknownFields =
@@ -138,39 +108,36 @@ public final class OrderProtos {
                             done = true;
                             break;
                         case 10: {
-                            com.google.protobuf.ByteString bs = input.readBytes();
-                            bitField0_ |= 0x00000001;
-                            id_ = bs;
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            modelNumber_ = s;
                             break;
                         }
                         case 16: {
-                            bitField0_ |= 0x00000002;
+
                             cost_ = input.readInt32();
                             break;
                         }
                         case 26: {
-                            com.google.protobuf.ByteString bs = input.readBytes();
-                            bitField0_ |= 0x00000004;
-                            email_ = bs;
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            email_ = s;
                             break;
                         }
                         case 34: {
-                            com.google.protobuf.ByteString bs = input.readBytes();
-                            bitField0_ |= 0x00000008;
-                            shippingaddress_ = bs;
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            shippingAddress_ = s;
                             break;
                         }
                         case 42: {
-                            if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                                products_ = new java.util.ArrayList<Product>();
-                                mutable_bitField0_ |= 0x00000010;
-                            }
-                            products_.add(
-                                    input.readMessage(com.ikea.bigdata.protos.OrderProtos.Order.Product.PARSER, extensionRegistry));
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            mobileNumber_ = s;
                             break;
                         }
                         default: {
-                            if (!parseUnknownField(
+                            if (!parseUnknownFieldProto3(
                                     input, unknownFields, extensionRegistry, tag)) {
                                 done = true;
                             }
@@ -184,1428 +151,51 @@ public final class OrderProtos {
                 throw new com.google.protobuf.InvalidProtocolBufferException(
                         e).setUnfinishedMessage(this);
             } finally {
-                if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                    products_ = java.util.Collections.unmodifiableList(products_);
-                }
                 this.unknownFields = unknownFields.build();
                 makeExtensionsImmutable();
             }
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_descriptor;
+            return com.ikea.bigdata.protos.OrderProtos.internal_static_com_ikea_bigdata_protos_Order_descriptor;
         }
 
-        @Override
-        protected FieldAccessorTable
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_fieldAccessorTable
+            return com.ikea.bigdata.protos.OrderProtos.internal_static_com_ikea_bigdata_protos_Order_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
                             com.ikea.bigdata.protos.OrderProtos.Order.class, com.ikea.bigdata.protos.OrderProtos.Order.Builder.class);
         }
 
-        public interface ProductOrBuilder extends
-                // @@protoc_insertion_point(interface_extends:bigdata.workshop.Order.Product)
-                com.google.protobuf.MessageOrBuilder {
-
-            /**
-             * <code>required string name = 1;</code>
-             */
-            boolean hasName();
-            /**
-             * <code>required string name = 1;</code>
-             */
-            String getName();
-            /**
-             * <code>required string name = 1;</code>
-             */
-            com.google.protobuf.ByteString
-            getNameBytes();
-
-            /**
-             * <code>required string code = 2;</code>
-             */
-            boolean hasCode();
-            /**
-             * <code>required string code = 2;</code>
-             */
-            String getCode();
-            /**
-             * <code>required string code = 2;</code>
-             */
-            com.google.protobuf.ByteString
-            getCodeBytes();
-
-            /**
-             * <code>required int32 price = 3;</code>
-             */
-            boolean hasPrice();
-            /**
-             * <code>required int32 price = 3;</code>
-             */
-            int getPrice();
-
-            /**
-             * <code>required string modelnumber = 4;</code>
-             */
-            boolean hasModelnumber();
-            /**
-             * <code>required string modelnumber = 4;</code>
-             */
-            String getModelnumber();
-            /**
-             * <code>required string modelnumber = 4;</code>
-             */
-            com.google.protobuf.ByteString
-            getModelnumberBytes();
-
-            /**
-             * <code>required string manufacturer = 5;</code>
-             */
-            boolean hasManufacturer();
-            /**
-             * <code>required string manufacturer = 5;</code>
-             */
-            String getManufacturer();
-            /**
-             * <code>required string manufacturer = 5;</code>
-             */
-            com.google.protobuf.ByteString
-            getManufacturerBytes();
-
-            /**
-             * <code>optional string description = 6;</code>
-             */
-            boolean hasDescription();
-            /**
-             * <code>optional string description = 6;</code>
-             */
-            String getDescription();
-            /**
-             * <code>optional string description = 6;</code>
-             */
-            com.google.protobuf.ByteString
-            getDescriptionBytes();
-        }
+        public static final int MODELNUMBER_FIELD_NUMBER = 1;
+        private volatile java.lang.Object modelNumber_;
         /**
-         * Protobuf type {@code bigdata.workshop.Order.Product}
+         * <code>string modelNumber = 1;</code>
          */
-        public  static final class Product extends
-                com.google.protobuf.GeneratedMessageV3 implements
-                // @@protoc_insertion_point(message_implements:bigdata.workshop.Order.Product)
-                ProductOrBuilder {
-            private static final long serialVersionUID = 0L;
-            // Use Product.newBuilder() to construct.
-            private Product(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-                super(builder);
-            }
-            private Product() {
-                name_ = "";
-                code_ = "";
-                price_ = 0;
-                modelnumber_ = "";
-                manufacturer_ = "";
-                description_ = "";
-            }
-
-            @Override
-            public final com.google.protobuf.UnknownFieldSet
-            getUnknownFields() {
-                return this.unknownFields;
-            }
-            private Product(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                this();
-                if (extensionRegistry == null) {
-                    throw new NullPointerException();
-                }
-                int mutable_bitField0_ = 0;
-                com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-                        com.google.protobuf.UnknownFieldSet.newBuilder();
-                try {
-                    boolean done = false;
-                    while (!done) {
-                        int tag = input.readTag();
-                        switch (tag) {
-                            case 0:
-                                done = true;
-                                break;
-                            case 10: {
-                                com.google.protobuf.ByteString bs = input.readBytes();
-                                bitField0_ |= 0x00000001;
-                                name_ = bs;
-                                break;
-                            }
-                            case 18: {
-                                com.google.protobuf.ByteString bs = input.readBytes();
-                                bitField0_ |= 0x00000002;
-                                code_ = bs;
-                                break;
-                            }
-                            case 24: {
-                                bitField0_ |= 0x00000004;
-                                price_ = input.readInt32();
-                                break;
-                            }
-                            case 34: {
-                                com.google.protobuf.ByteString bs = input.readBytes();
-                                bitField0_ |= 0x00000008;
-                                modelnumber_ = bs;
-                                break;
-                            }
-                            case 42: {
-                                com.google.protobuf.ByteString bs = input.readBytes();
-                                bitField0_ |= 0x00000010;
-                                manufacturer_ = bs;
-                                break;
-                            }
-                            case 50: {
-                                com.google.protobuf.ByteString bs = input.readBytes();
-                                bitField0_ |= 0x00000020;
-                                description_ = bs;
-                                break;
-                            }
-                            default: {
-                                if (!parseUnknownField(
-                                        input, unknownFields, extensionRegistry, tag)) {
-                                    done = true;
-                                }
-                                break;
-                            }
-                        }
-                    }
-                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    throw e.setUnfinishedMessage(this);
-                } catch (java.io.IOException e) {
-                    throw new com.google.protobuf.InvalidProtocolBufferException(
-                            e).setUnfinishedMessage(this);
-                } finally {
-                    this.unknownFields = unknownFields.build();
-                    makeExtensionsImmutable();
-                }
-            }
-            public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-                return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_Product_descriptor;
-            }
-
-            @Override
-            protected FieldAccessorTable
-            internalGetFieldAccessorTable() {
-                return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_Product_fieldAccessorTable
-                        .ensureFieldAccessorsInitialized(
-                                com.ikea.bigdata.protos.OrderProtos.Order.Product.class, com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder.class);
-            }
-
-            private int bitField0_;
-            public static final int NAME_FIELD_NUMBER = 1;
-            private volatile Object name_;
-            /**
-             * <code>required string name = 1;</code>
-             */
-            public boolean hasName() {
-                return ((bitField0_ & 0x00000001) == 0x00000001);
-            }
-            /**
-             * <code>required string name = 1;</code>
-             */
-            public String getName() {
-                Object ref = name_;
-                if (ref instanceof String) {
-                    return (String) ref;
-                } else {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        name_ = s;
-                    }
-                    return s;
-                }
-            }
-            /**
-             * <code>required string name = 1;</code>
-             */
-            public com.google.protobuf.ByteString
-            getNameBytes() {
-                Object ref = name_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    name_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            public static final int CODE_FIELD_NUMBER = 2;
-            private volatile Object code_;
-            /**
-             * <code>required string code = 2;</code>
-             */
-            public boolean hasCode() {
-                return ((bitField0_ & 0x00000002) == 0x00000002);
-            }
-            /**
-             * <code>required string code = 2;</code>
-             */
-            public String getCode() {
-                Object ref = code_;
-                if (ref instanceof String) {
-                    return (String) ref;
-                } else {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        code_ = s;
-                    }
-                    return s;
-                }
-            }
-            /**
-             * <code>required string code = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-            getCodeBytes() {
-                Object ref = code_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    code_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            public static final int PRICE_FIELD_NUMBER = 3;
-            private int price_;
-            /**
-             * <code>required int32 price = 3;</code>
-             */
-            public boolean hasPrice() {
-                return ((bitField0_ & 0x00000004) == 0x00000004);
-            }
-            /**
-             * <code>required int32 price = 3;</code>
-             */
-            public int getPrice() {
-                return price_;
-            }
-
-            public static final int MODELNUMBER_FIELD_NUMBER = 4;
-            private volatile Object modelnumber_;
-            /**
-             * <code>required string modelnumber = 4;</code>
-             */
-            public boolean hasModelnumber() {
-                return ((bitField0_ & 0x00000008) == 0x00000008);
-            }
-            /**
-             * <code>required string modelnumber = 4;</code>
-             */
-            public String getModelnumber() {
-                Object ref = modelnumber_;
-                if (ref instanceof String) {
-                    return (String) ref;
-                } else {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        modelnumber_ = s;
-                    }
-                    return s;
-                }
-            }
-            /**
-             * <code>required string modelnumber = 4;</code>
-             */
-            public com.google.protobuf.ByteString
-            getModelnumberBytes() {
-                Object ref = modelnumber_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    modelnumber_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            public static final int MANUFACTURER_FIELD_NUMBER = 5;
-            private volatile Object manufacturer_;
-            /**
-             * <code>required string manufacturer = 5;</code>
-             */
-            public boolean hasManufacturer() {
-                return ((bitField0_ & 0x00000010) == 0x00000010);
-            }
-            /**
-             * <code>required string manufacturer = 5;</code>
-             */
-            public String getManufacturer() {
-                Object ref = manufacturer_;
-                if (ref instanceof String) {
-                    return (String) ref;
-                } else {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        manufacturer_ = s;
-                    }
-                    return s;
-                }
-            }
-            /**
-             * <code>required string manufacturer = 5;</code>
-             */
-            public com.google.protobuf.ByteString
-            getManufacturerBytes() {
-                Object ref = manufacturer_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    manufacturer_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            public static final int DESCRIPTION_FIELD_NUMBER = 6;
-            private volatile Object description_;
-            /**
-             * <code>optional string description = 6;</code>
-             */
-            public boolean hasDescription() {
-                return ((bitField0_ & 0x00000020) == 0x00000020);
-            }
-            /**
-             * <code>optional string description = 6;</code>
-             */
-            public String getDescription() {
-                Object ref = description_;
-                if (ref instanceof String) {
-                    return (String) ref;
-                } else {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        description_ = s;
-                    }
-                    return s;
-                }
-            }
-            /**
-             * <code>optional string description = 6;</code>
-             */
-            public com.google.protobuf.ByteString
-            getDescriptionBytes() {
-                Object ref = description_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    description_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-
-            private byte memoizedIsInitialized = -1;
-            @Override
-            public final boolean isInitialized() {
-                byte isInitialized = memoizedIsInitialized;
-                if (isInitialized == 1) return true;
-                if (isInitialized == 0) return false;
-
-                if (!hasName()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-                if (!hasCode()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-                if (!hasPrice()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-                if (!hasModelnumber()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-                if (!hasManufacturer()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-                memoizedIsInitialized = 1;
-                return true;
-            }
-
-            @Override
-            public void writeTo(com.google.protobuf.CodedOutputStream output)
-                    throws java.io.IOException {
-                if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                    com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-                }
-                if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                    com.google.protobuf.GeneratedMessageV3.writeString(output, 2, code_);
-                }
-                if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                    output.writeInt32(3, price_);
-                }
-                if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                    com.google.protobuf.GeneratedMessageV3.writeString(output, 4, modelnumber_);
-                }
-                if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                    com.google.protobuf.GeneratedMessageV3.writeString(output, 5, manufacturer_);
-                }
-                if (((bitField0_ & 0x00000020) == 0x00000020)) {
-                    com.google.protobuf.GeneratedMessageV3.writeString(output, 6, description_);
-                }
-                unknownFields.writeTo(output);
-            }
-
-            @Override
-            public int getSerializedSize() {
-                int size = memoizedSize;
-                if (size != -1) return size;
-
-                size = 0;
-                if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                    size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-                }
-                if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                    size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, code_);
-                }
-                if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                    size += com.google.protobuf.CodedOutputStream
-                            .computeInt32Size(3, price_);
-                }
-                if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                    size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, modelnumber_);
-                }
-                if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                    size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, manufacturer_);
-                }
-                if (((bitField0_ & 0x00000020) == 0x00000020)) {
-                    size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, description_);
-                }
-                size += unknownFields.getSerializedSize();
-                memoizedSize = size;
-                return size;
-            }
-
-            @Override
-            public boolean equals(final Object obj) {
-                if (obj == this) {
-                    return true;
-                }
-                if (!(obj instanceof com.ikea.bigdata.protos.OrderProtos.Order.Product)) {
-                    return super.equals(obj);
-                }
-                com.ikea.bigdata.protos.OrderProtos.Order.Product other = (com.ikea.bigdata.protos.OrderProtos.Order.Product) obj;
-
-                boolean result = true;
-                result = result && (hasName() == other.hasName());
-                if (hasName()) {
-                    result = result && getName()
-                            .equals(other.getName());
-                }
-                result = result && (hasCode() == other.hasCode());
-                if (hasCode()) {
-                    result = result && getCode()
-                            .equals(other.getCode());
-                }
-                result = result && (hasPrice() == other.hasPrice());
-                if (hasPrice()) {
-                    result = result && (getPrice()
-                            == other.getPrice());
-                }
-                result = result && (hasModelnumber() == other.hasModelnumber());
-                if (hasModelnumber()) {
-                    result = result && getModelnumber()
-                            .equals(other.getModelnumber());
-                }
-                result = result && (hasManufacturer() == other.hasManufacturer());
-                if (hasManufacturer()) {
-                    result = result && getManufacturer()
-                            .equals(other.getManufacturer());
-                }
-                result = result && (hasDescription() == other.hasDescription());
-                if (hasDescription()) {
-                    result = result && getDescription()
-                            .equals(other.getDescription());
-                }
-                result = result && unknownFields.equals(other.unknownFields);
-                return result;
-            }
-
-            @Override
-            public int hashCode() {
-                if (memoizedHashCode != 0) {
-                    return memoizedHashCode;
-                }
-                int hash = 41;
-                hash = (19 * hash) + getDescriptor().hashCode();
-                if (hasName()) {
-                    hash = (37 * hash) + NAME_FIELD_NUMBER;
-                    hash = (53 * hash) + getName().hashCode();
-                }
-                if (hasCode()) {
-                    hash = (37 * hash) + CODE_FIELD_NUMBER;
-                    hash = (53 * hash) + getCode().hashCode();
-                }
-                if (hasPrice()) {
-                    hash = (37 * hash) + PRICE_FIELD_NUMBER;
-                    hash = (53 * hash) + getPrice();
-                }
-                if (hasModelnumber()) {
-                    hash = (37 * hash) + MODELNUMBER_FIELD_NUMBER;
-                    hash = (53 * hash) + getModelnumber().hashCode();
-                }
-                if (hasManufacturer()) {
-                    hash = (37 * hash) + MANUFACTURER_FIELD_NUMBER;
-                    hash = (53 * hash) + getManufacturer().hashCode();
-                }
-                if (hasDescription()) {
-                    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-                    hash = (53 * hash) + getDescription().hashCode();
-                }
-                hash = (29 * hash) + unknownFields.hashCode();
-                memoizedHashCode = hash;
-                return hash;
-            }
-
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    java.nio.ByteBuffer data)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return PARSER.parseFrom(data);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    java.nio.ByteBuffer data,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return PARSER.parseFrom(data, extensionRegistry);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    com.google.protobuf.ByteString data)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return PARSER.parseFrom(data);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    com.google.protobuf.ByteString data,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return PARSER.parseFrom(data, extensionRegistry);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(byte[] data)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return PARSER.parseFrom(data);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    byte[] data,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws com.google.protobuf.InvalidProtocolBufferException {
-                return PARSER.parseFrom(data, extensionRegistry);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(java.io.InputStream input)
-                    throws java.io.IOException {
-                return com.google.protobuf.GeneratedMessageV3
-                        .parseWithIOException(PARSER, input);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    java.io.InputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                return com.google.protobuf.GeneratedMessageV3
-                        .parseWithIOException(PARSER, input, extensionRegistry);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseDelimitedFrom(java.io.InputStream input)
-                    throws java.io.IOException {
-                return com.google.protobuf.GeneratedMessageV3
-                        .parseDelimitedWithIOException(PARSER, input);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseDelimitedFrom(
-                    java.io.InputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                return com.google.protobuf.GeneratedMessageV3
-                        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    com.google.protobuf.CodedInputStream input)
-                    throws java.io.IOException {
-                return com.google.protobuf.GeneratedMessageV3
-                        .parseWithIOException(PARSER, input);
-            }
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product parseFrom(
-                    com.google.protobuf.CodedInputStream input,
-                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                    throws java.io.IOException {
-                return com.google.protobuf.GeneratedMessageV3
-                        .parseWithIOException(PARSER, input, extensionRegistry);
-            }
-
-            @Override
-            public Builder newBuilderForType() { return newBuilder(); }
-            public static Builder newBuilder() {
-                return DEFAULT_INSTANCE.toBuilder();
-            }
-            public static Builder newBuilder(com.ikea.bigdata.protos.OrderProtos.Order.Product prototype) {
-                return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-            }
-            @Override
-            public Builder toBuilder() {
-                return this == DEFAULT_INSTANCE
-                        ? new Builder() : new Builder().mergeFrom(this);
-            }
-
-            @Override
-            protected Builder newBuilderForType(
-                    BuilderParent parent) {
-                Builder builder = new Builder(parent);
-                return builder;
-            }
-            /**
-             * Protobuf type {@code bigdata.workshop.Order.Product}
-             */
-            public static final class Builder extends
-                    com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                    // @@protoc_insertion_point(builder_implements:bigdata.workshop.Order.Product)
-                    com.ikea.bigdata.protos.OrderProtos.Order.ProductOrBuilder {
-                public static final com.google.protobuf.Descriptors.Descriptor
-                getDescriptor() {
-                    return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_Product_descriptor;
-                }
-
-                @Override
-                protected FieldAccessorTable
-                internalGetFieldAccessorTable() {
-                    return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_Product_fieldAccessorTable
-                            .ensureFieldAccessorsInitialized(
-                                    com.ikea.bigdata.protos.OrderProtos.Order.Product.class, com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder.class);
-                }
-
-                // Construct using com.ikea.bigdata.protos.OrderProtos.Order.Product.newBuilder()
-                private Builder() {
-                    maybeForceBuilderInitialization();
-                }
-
-                private Builder(
-                        BuilderParent parent) {
-                    super(parent);
-                    maybeForceBuilderInitialization();
-                }
-                private void maybeForceBuilderInitialization() {
-                    if (com.google.protobuf.GeneratedMessageV3
-                            .alwaysUseFieldBuilders) {
-                    }
-                }
-                @Override
-                public Builder clear() {
-                    super.clear();
-                    name_ = "";
-                    bitField0_ = (bitField0_ & ~0x00000001);
-                    code_ = "";
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                    price_ = 0;
-                    bitField0_ = (bitField0_ & ~0x00000004);
-                    modelnumber_ = "";
-                    bitField0_ = (bitField0_ & ~0x00000008);
-                    manufacturer_ = "";
-                    bitField0_ = (bitField0_ & ~0x00000010);
-                    description_ = "";
-                    bitField0_ = (bitField0_ & ~0x00000020);
-                    return this;
-                }
-
-                @Override
-                public com.google.protobuf.Descriptors.Descriptor
-                getDescriptorForType() {
-                    return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_Product_descriptor;
-                }
-
-                @Override
-                public com.ikea.bigdata.protos.OrderProtos.Order.Product getDefaultInstanceForType() {
-                    return com.ikea.bigdata.protos.OrderProtos.Order.Product.getDefaultInstance();
-                }
-
-                @Override
-                public com.ikea.bigdata.protos.OrderProtos.Order.Product build() {
-                    com.ikea.bigdata.protos.OrderProtos.Order.Product result = buildPartial();
-                    if (!result.isInitialized()) {
-                        throw newUninitializedMessageException(result);
-                    }
-                    return result;
-                }
-
-                @Override
-                public com.ikea.bigdata.protos.OrderProtos.Order.Product buildPartial() {
-                    com.ikea.bigdata.protos.OrderProtos.Order.Product result = new com.ikea.bigdata.protos.OrderProtos.Order.Product(this);
-                    int from_bitField0_ = bitField0_;
-                    int to_bitField0_ = 0;
-                    if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-                        to_bitField0_ |= 0x00000001;
-                    }
-                    result.name_ = name_;
-                    if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-                        to_bitField0_ |= 0x00000002;
-                    }
-                    result.code_ = code_;
-                    if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-                        to_bitField0_ |= 0x00000004;
-                    }
-                    result.price_ = price_;
-                    if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-                        to_bitField0_ |= 0x00000008;
-                    }
-                    result.modelnumber_ = modelnumber_;
-                    if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-                        to_bitField0_ |= 0x00000010;
-                    }
-                    result.manufacturer_ = manufacturer_;
-                    if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-                        to_bitField0_ |= 0x00000020;
-                    }
-                    result.description_ = description_;
-                    result.bitField0_ = to_bitField0_;
-                    onBuilt();
-                    return result;
-                }
-
-                @Override
-                public Builder clone() {
-                    return (Builder) super.clone();
-                }
-                @Override
-                public Builder setField(
-                        com.google.protobuf.Descriptors.FieldDescriptor field,
-                        Object value) {
-                    return (Builder) super.setField(field, value);
-                }
-                @Override
-                public Builder clearField(
-                        com.google.protobuf.Descriptors.FieldDescriptor field) {
-                    return (Builder) super.clearField(field);
-                }
-                @Override
-                public Builder clearOneof(
-                        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-                    return (Builder) super.clearOneof(oneof);
-                }
-                @Override
-                public Builder setRepeatedField(
-                        com.google.protobuf.Descriptors.FieldDescriptor field,
-                        int index, Object value) {
-                    return (Builder) super.setRepeatedField(field, index, value);
-                }
-                @Override
-                public Builder addRepeatedField(
-                        com.google.protobuf.Descriptors.FieldDescriptor field,
-                        Object value) {
-                    return (Builder) super.addRepeatedField(field, value);
-                }
-                @Override
-                public Builder mergeFrom(com.google.protobuf.Message other) {
-                    if (other instanceof com.ikea.bigdata.protos.OrderProtos.Order.Product) {
-                        return mergeFrom((com.ikea.bigdata.protos.OrderProtos.Order.Product)other);
-                    } else {
-                        super.mergeFrom(other);
-                        return this;
-                    }
-                }
-
-                public Builder mergeFrom(com.ikea.bigdata.protos.OrderProtos.Order.Product other) {
-                    if (other == com.ikea.bigdata.protos.OrderProtos.Order.Product.getDefaultInstance()) return this;
-                    if (other.hasName()) {
-                        bitField0_ |= 0x00000001;
-                        name_ = other.name_;
-                        onChanged();
-                    }
-                    if (other.hasCode()) {
-                        bitField0_ |= 0x00000002;
-                        code_ = other.code_;
-                        onChanged();
-                    }
-                    if (other.hasPrice()) {
-                        setPrice(other.getPrice());
-                    }
-                    if (other.hasModelnumber()) {
-                        bitField0_ |= 0x00000008;
-                        modelnumber_ = other.modelnumber_;
-                        onChanged();
-                    }
-                    if (other.hasManufacturer()) {
-                        bitField0_ |= 0x00000010;
-                        manufacturer_ = other.manufacturer_;
-                        onChanged();
-                    }
-                    if (other.hasDescription()) {
-                        bitField0_ |= 0x00000020;
-                        description_ = other.description_;
-                        onChanged();
-                    }
-                    this.mergeUnknownFields(other.unknownFields);
-                    onChanged();
-                    return this;
-                }
-
-                @Override
-                public final boolean isInitialized() {
-                    if (!hasName()) {
-                        return false;
-                    }
-                    if (!hasCode()) {
-                        return false;
-                    }
-                    if (!hasPrice()) {
-                        return false;
-                    }
-                    if (!hasModelnumber()) {
-                        return false;
-                    }
-                    if (!hasManufacturer()) {
-                        return false;
-                    }
-                    return true;
-                }
-
-                @Override
-                public Builder mergeFrom(
-                        com.google.protobuf.CodedInputStream input,
-                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                        throws java.io.IOException {
-                    com.ikea.bigdata.protos.OrderProtos.Order.Product parsedMessage = null;
-                    try {
-                        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                        parsedMessage = (com.ikea.bigdata.protos.OrderProtos.Order.Product) e.getUnfinishedMessage();
-                        throw e.unwrapIOException();
-                    } finally {
-                        if (parsedMessage != null) {
-                            mergeFrom(parsedMessage);
-                        }
-                    }
-                    return this;
-                }
-                private int bitField0_;
-
-                private Object name_ = "";
-                /**
-                 * <code>required string name = 1;</code>
-                 */
-                public boolean hasName() {
-                    return ((bitField0_ & 0x00000001) == 0x00000001);
-                }
-                /**
-                 * <code>required string name = 1;</code>
-                 */
-                public String getName() {
-                    Object ref = name_;
-                    if (!(ref instanceof String)) {
-                        com.google.protobuf.ByteString bs =
-                                (com.google.protobuf.ByteString) ref;
-                        String s = bs.toStringUtf8();
-                        if (bs.isValidUtf8()) {
-                            name_ = s;
-                        }
-                        return s;
-                    } else {
-                        return (String) ref;
-                    }
-                }
-                /**
-                 * <code>required string name = 1;</code>
-                 */
-                public com.google.protobuf.ByteString
-                getNameBytes() {
-                    Object ref = name_;
-                    if (ref instanceof String) {
-                        com.google.protobuf.ByteString b =
-                                com.google.protobuf.ByteString.copyFromUtf8(
-                                        (String) ref);
-                        name_ = b;
-                        return b;
-                    } else {
-                        return (com.google.protobuf.ByteString) ref;
-                    }
-                }
-                /**
-                 * <code>required string name = 1;</code>
-                 */
-                public Builder setName(
-                        String value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000001;
-                    name_ = value;
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string name = 1;</code>
-                 */
-                public Builder clearName() {
-                    bitField0_ = (bitField0_ & ~0x00000001);
-                    name_ = getDefaultInstance().getName();
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string name = 1;</code>
-                 */
-                public Builder setNameBytes(
-                        com.google.protobuf.ByteString value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000001;
-                    name_ = value;
-                    onChanged();
-                    return this;
-                }
-
-                private Object code_ = "";
-                /**
-                 * <code>required string code = 2;</code>
-                 */
-                public boolean hasCode() {
-                    return ((bitField0_ & 0x00000002) == 0x00000002);
-                }
-                /**
-                 * <code>required string code = 2;</code>
-                 */
-                public String getCode() {
-                    Object ref = code_;
-                    if (!(ref instanceof String)) {
-                        com.google.protobuf.ByteString bs =
-                                (com.google.protobuf.ByteString) ref;
-                        String s = bs.toStringUtf8();
-                        if (bs.isValidUtf8()) {
-                            code_ = s;
-                        }
-                        return s;
-                    } else {
-                        return (String) ref;
-                    }
-                }
-                /**
-                 * <code>required string code = 2;</code>
-                 */
-                public com.google.protobuf.ByteString
-                getCodeBytes() {
-                    Object ref = code_;
-                    if (ref instanceof String) {
-                        com.google.protobuf.ByteString b =
-                                com.google.protobuf.ByteString.copyFromUtf8(
-                                        (String) ref);
-                        code_ = b;
-                        return b;
-                    } else {
-                        return (com.google.protobuf.ByteString) ref;
-                    }
-                }
-                /**
-                 * <code>required string code = 2;</code>
-                 */
-                public Builder setCode(
-                        String value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000002;
-                    code_ = value;
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string code = 2;</code>
-                 */
-                public Builder clearCode() {
-                    bitField0_ = (bitField0_ & ~0x00000002);
-                    code_ = getDefaultInstance().getCode();
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string code = 2;</code>
-                 */
-                public Builder setCodeBytes(
-                        com.google.protobuf.ByteString value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000002;
-                    code_ = value;
-                    onChanged();
-                    return this;
-                }
-
-                private int price_ ;
-                /**
-                 * <code>required int32 price = 3;</code>
-                 */
-                public boolean hasPrice() {
-                    return ((bitField0_ & 0x00000004) == 0x00000004);
-                }
-                /**
-                 * <code>required int32 price = 3;</code>
-                 */
-                public int getPrice() {
-                    return price_;
-                }
-                /**
-                 * <code>required int32 price = 3;</code>
-                 */
-                public Builder setPrice(int value) {
-                    bitField0_ |= 0x00000004;
-                    price_ = value;
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required int32 price = 3;</code>
-                 */
-                public Builder clearPrice() {
-                    bitField0_ = (bitField0_ & ~0x00000004);
-                    price_ = 0;
-                    onChanged();
-                    return this;
-                }
-
-                private Object modelnumber_ = "";
-                /**
-                 * <code>required string modelnumber = 4;</code>
-                 */
-                public boolean hasModelnumber() {
-                    return ((bitField0_ & 0x00000008) == 0x00000008);
-                }
-                /**
-                 * <code>required string modelnumber = 4;</code>
-                 */
-                public String getModelnumber() {
-                    Object ref = modelnumber_;
-                    if (!(ref instanceof String)) {
-                        com.google.protobuf.ByteString bs =
-                                (com.google.protobuf.ByteString) ref;
-                        String s = bs.toStringUtf8();
-                        if (bs.isValidUtf8()) {
-                            modelnumber_ = s;
-                        }
-                        return s;
-                    } else {
-                        return (String) ref;
-                    }
-                }
-                /**
-                 * <code>required string modelnumber = 4;</code>
-                 */
-                public com.google.protobuf.ByteString
-                getModelnumberBytes() {
-                    Object ref = modelnumber_;
-                    if (ref instanceof String) {
-                        com.google.protobuf.ByteString b =
-                                com.google.protobuf.ByteString.copyFromUtf8(
-                                        (String) ref);
-                        modelnumber_ = b;
-                        return b;
-                    } else {
-                        return (com.google.protobuf.ByteString) ref;
-                    }
-                }
-                /**
-                 * <code>required string modelnumber = 4;</code>
-                 */
-                public Builder setModelnumber(
-                        String value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000008;
-                    modelnumber_ = value;
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string modelnumber = 4;</code>
-                 */
-                public Builder clearModelnumber() {
-                    bitField0_ = (bitField0_ & ~0x00000008);
-                    modelnumber_ = getDefaultInstance().getModelnumber();
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string modelnumber = 4;</code>
-                 */
-                public Builder setModelnumberBytes(
-                        com.google.protobuf.ByteString value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000008;
-                    modelnumber_ = value;
-                    onChanged();
-                    return this;
-                }
-
-                private Object manufacturer_ = "";
-                /**
-                 * <code>required string manufacturer = 5;</code>
-                 */
-                public boolean hasManufacturer() {
-                    return ((bitField0_ & 0x00000010) == 0x00000010);
-                }
-                /**
-                 * <code>required string manufacturer = 5;</code>
-                 */
-                public String getManufacturer() {
-                    Object ref = manufacturer_;
-                    if (!(ref instanceof String)) {
-                        com.google.protobuf.ByteString bs =
-                                (com.google.protobuf.ByteString) ref;
-                        String s = bs.toStringUtf8();
-                        if (bs.isValidUtf8()) {
-                            manufacturer_ = s;
-                        }
-                        return s;
-                    } else {
-                        return (String) ref;
-                    }
-                }
-                /**
-                 * <code>required string manufacturer = 5;</code>
-                 */
-                public com.google.protobuf.ByteString
-                getManufacturerBytes() {
-                    Object ref = manufacturer_;
-                    if (ref instanceof String) {
-                        com.google.protobuf.ByteString b =
-                                com.google.protobuf.ByteString.copyFromUtf8(
-                                        (String) ref);
-                        manufacturer_ = b;
-                        return b;
-                    } else {
-                        return (com.google.protobuf.ByteString) ref;
-                    }
-                }
-                /**
-                 * <code>required string manufacturer = 5;</code>
-                 */
-                public Builder setManufacturer(
-                        String value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000010;
-                    manufacturer_ = value;
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string manufacturer = 5;</code>
-                 */
-                public Builder clearManufacturer() {
-                    bitField0_ = (bitField0_ & ~0x00000010);
-                    manufacturer_ = getDefaultInstance().getManufacturer();
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>required string manufacturer = 5;</code>
-                 */
-                public Builder setManufacturerBytes(
-                        com.google.protobuf.ByteString value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000010;
-                    manufacturer_ = value;
-                    onChanged();
-                    return this;
-                }
-
-                private Object description_ = "";
-                /**
-                 * <code>optional string description = 6;</code>
-                 */
-                public boolean hasDescription() {
-                    return ((bitField0_ & 0x00000020) == 0x00000020);
-                }
-                /**
-                 * <code>optional string description = 6;</code>
-                 */
-                public String getDescription() {
-                    Object ref = description_;
-                    if (!(ref instanceof String)) {
-                        com.google.protobuf.ByteString bs =
-                                (com.google.protobuf.ByteString) ref;
-                        String s = bs.toStringUtf8();
-                        if (bs.isValidUtf8()) {
-                            description_ = s;
-                        }
-                        return s;
-                    } else {
-                        return (String) ref;
-                    }
-                }
-                /**
-                 * <code>optional string description = 6;</code>
-                 */
-                public com.google.protobuf.ByteString
-                getDescriptionBytes() {
-                    Object ref = description_;
-                    if (ref instanceof String) {
-                        com.google.protobuf.ByteString b =
-                                com.google.protobuf.ByteString.copyFromUtf8(
-                                        (String) ref);
-                        description_ = b;
-                        return b;
-                    } else {
-                        return (com.google.protobuf.ByteString) ref;
-                    }
-                }
-                /**
-                 * <code>optional string description = 6;</code>
-                 */
-                public Builder setDescription(
-                        String value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000020;
-                    description_ = value;
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>optional string description = 6;</code>
-                 */
-                public Builder clearDescription() {
-                    bitField0_ = (bitField0_ & ~0x00000020);
-                    description_ = getDefaultInstance().getDescription();
-                    onChanged();
-                    return this;
-                }
-                /**
-                 * <code>optional string description = 6;</code>
-                 */
-                public Builder setDescriptionBytes(
-                        com.google.protobuf.ByteString value) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    bitField0_ |= 0x00000020;
-                    description_ = value;
-                    onChanged();
-                    return this;
-                }
-                @Override
-                public final Builder setUnknownFields(
-                        final com.google.protobuf.UnknownFieldSet unknownFields) {
-                    return super.setUnknownFields(unknownFields);
-                }
-
-                @Override
-                public final Builder mergeUnknownFields(
-                        final com.google.protobuf.UnknownFieldSet unknownFields) {
-                    return super.mergeUnknownFields(unknownFields);
-                }
-
-
-                // @@protoc_insertion_point(builder_scope:bigdata.workshop.Order.Product)
-            }
-
-            // @@protoc_insertion_point(class_scope:bigdata.workshop.Order.Product)
-            private static final com.ikea.bigdata.protos.OrderProtos.Order.Product DEFAULT_INSTANCE;
-            static {
-                DEFAULT_INSTANCE = new com.ikea.bigdata.protos.OrderProtos.Order.Product();
-            }
-
-            public static com.ikea.bigdata.protos.OrderProtos.Order.Product getDefaultInstance() {
-                return DEFAULT_INSTANCE;
-            }
-
-            @Deprecated public static final com.google.protobuf.Parser<Product>
-                    PARSER = new com.google.protobuf.AbstractParser<Product>() {
-                @Override
-                public Product parsePartialFrom(
-                        com.google.protobuf.CodedInputStream input,
-                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                        throws com.google.protobuf.InvalidProtocolBufferException {
-                    return new Product(input, extensionRegistry);
-                }
-            };
-
-            public static com.google.protobuf.Parser<Product> parser() {
-                return PARSER;
-            }
-
-            @Override
-            public com.google.protobuf.Parser<Product> getParserForType() {
-                return PARSER;
-            }
-
-            @Override
-            public com.ikea.bigdata.protos.OrderProtos.Order.Product getDefaultInstanceForType() {
-                return DEFAULT_INSTANCE;
-            }
-
-        }
-
-        private int bitField0_;
-        public static final int ID_FIELD_NUMBER = 1;
-        private volatile Object id_;
-        /**
-         * <code>required string id = 1;</code>
-         */
-        public boolean hasId() {
-            return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>required string id = 1;</code>
-         */
-        public String getId() {
-            Object ref = id_;
-            if (ref instanceof String) {
-                return (String) ref;
+        public java.lang.String getModelNumber() {
+            java.lang.Object ref = modelNumber_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
-                String s = bs.toStringUtf8();
-                if (bs.isValidUtf8()) {
-                    id_ = s;
-                }
+                java.lang.String s = bs.toStringUtf8();
+                modelNumber_ = s;
                 return s;
             }
         }
         /**
-         * <code>required string id = 1;</code>
+         * <code>string modelNumber = 1;</code>
          */
         public com.google.protobuf.ByteString
-        getIdBytes() {
-            Object ref = id_;
-            if (ref instanceof String) {
+        getModelNumberBytes() {
+            java.lang.Object ref = modelNumber_;
+            if (ref instanceof java.lang.String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
-                                (String) ref);
-                id_ = b;
+                                (java.lang.String) ref);
+                modelNumber_ = b;
                 return b;
             } else {
                 return (com.google.protobuf.ByteString) ref;
@@ -1615,53 +205,39 @@ public final class OrderProtos {
         public static final int COST_FIELD_NUMBER = 2;
         private int cost_;
         /**
-         * <code>required int32 cost = 2;</code>
-         */
-        public boolean hasCost() {
-            return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>required int32 cost = 2;</code>
+         * <code>int32 cost = 2;</code>
          */
         public int getCost() {
             return cost_;
         }
 
         public static final int EMAIL_FIELD_NUMBER = 3;
-        private volatile Object email_;
+        private volatile java.lang.Object email_;
         /**
-         * <code>optional string email = 3;</code>
+         * <code>string email = 3;</code>
          */
-        public boolean hasEmail() {
-            return ((bitField0_ & 0x00000004) == 0x00000004);
-        }
-        /**
-         * <code>optional string email = 3;</code>
-         */
-        public String getEmail() {
-            Object ref = email_;
-            if (ref instanceof String) {
-                return (String) ref;
+        public java.lang.String getEmail() {
+            java.lang.Object ref = email_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
-                String s = bs.toStringUtf8();
-                if (bs.isValidUtf8()) {
-                    email_ = s;
-                }
+                java.lang.String s = bs.toStringUtf8();
+                email_ = s;
                 return s;
             }
         }
         /**
-         * <code>optional string email = 3;</code>
+         * <code>string email = 3;</code>
          */
         public com.google.protobuf.ByteString
         getEmailBytes() {
-            Object ref = email_;
-            if (ref instanceof String) {
+            java.lang.Object ref = email_;
+            if (ref instanceof java.lang.String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
-                                (String) ref);
+                                (java.lang.String) ref);
                 email_ = b;
                 return b;
             } else {
@@ -1670,162 +246,134 @@ public final class OrderProtos {
         }
 
         public static final int SHIPPINGADDRESS_FIELD_NUMBER = 4;
-        private volatile Object shippingaddress_;
+        private volatile java.lang.Object shippingAddress_;
         /**
-         * <code>required string shippingaddress = 4;</code>
+         * <code>string shippingAddress = 4;</code>
          */
-        public boolean hasShippingaddress() {
-            return ((bitField0_ & 0x00000008) == 0x00000008);
-        }
-        /**
-         * <code>required string shippingaddress = 4;</code>
-         */
-        public String getShippingaddress() {
-            Object ref = shippingaddress_;
-            if (ref instanceof String) {
-                return (String) ref;
+        public java.lang.String getShippingAddress() {
+            java.lang.Object ref = shippingAddress_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
             } else {
                 com.google.protobuf.ByteString bs =
                         (com.google.protobuf.ByteString) ref;
-                String s = bs.toStringUtf8();
-                if (bs.isValidUtf8()) {
-                    shippingaddress_ = s;
-                }
+                java.lang.String s = bs.toStringUtf8();
+                shippingAddress_ = s;
                 return s;
             }
         }
         /**
-         * <code>required string shippingaddress = 4;</code>
+         * <code>string shippingAddress = 4;</code>
          */
         public com.google.protobuf.ByteString
-        getShippingaddressBytes() {
-            Object ref = shippingaddress_;
-            if (ref instanceof String) {
+        getShippingAddressBytes() {
+            java.lang.Object ref = shippingAddress_;
+            if (ref instanceof java.lang.String) {
                 com.google.protobuf.ByteString b =
                         com.google.protobuf.ByteString.copyFromUtf8(
-                                (String) ref);
-                shippingaddress_ = b;
+                                (java.lang.String) ref);
+                shippingAddress_ = b;
                 return b;
             } else {
                 return (com.google.protobuf.ByteString) ref;
             }
         }
 
-        public static final int PRODUCTS_FIELD_NUMBER = 5;
-        private java.util.List<Product> products_;
+        public static final int MOBILENUMBER_FIELD_NUMBER = 5;
+        private volatile java.lang.Object mobileNumber_;
         /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
+         * <code>string mobileNumber = 5;</code>
          */
-        public java.util.List<Product> getProductsList() {
-            return products_;
+        public java.lang.String getMobileNumber() {
+            java.lang.Object ref = mobileNumber_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                mobileNumber_ = s;
+                return s;
+            }
         }
         /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
+         * <code>string mobileNumber = 5;</code>
          */
-        public java.util.List<? extends ProductOrBuilder>
-        getProductsOrBuilderList() {
-            return products_;
-        }
-        /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-         */
-        public int getProductsCount() {
-            return products_.size();
-        }
-        /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-         */
-        public com.ikea.bigdata.protos.OrderProtos.Order.Product getProducts(int index) {
-            return products_.get(index);
-        }
-        /**
-         * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-         */
-        public com.ikea.bigdata.protos.OrderProtos.Order.ProductOrBuilder getProductsOrBuilder(
-                int index) {
-            return products_.get(index);
+        public com.google.protobuf.ByteString
+        getMobileNumberBytes() {
+            java.lang.Object ref = mobileNumber_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                mobileNumber_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
         }
 
         private byte memoizedIsInitialized = -1;
-        @Override
+        @java.lang.Override
         public final boolean isInitialized() {
             byte isInitialized = memoizedIsInitialized;
             if (isInitialized == 1) return true;
             if (isInitialized == 0) return false;
 
-            if (!hasId()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasCost()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasShippingaddress()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            for (int i = 0; i < getProductsCount(); i++) {
-                if (!getProducts(i).isInitialized()) {
-                    memoizedIsInitialized = 0;
-                    return false;
-                }
-            }
             memoizedIsInitialized = 1;
             return true;
         }
 
-        @Override
+        @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
-            if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+            if (!getModelNumberBytes().isEmpty()) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, modelNumber_);
             }
-            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            if (cost_ != 0) {
                 output.writeInt32(2, cost_);
             }
-            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            if (!getEmailBytes().isEmpty()) {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 3, email_);
             }
-            if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, shippingaddress_);
+            if (!getShippingAddressBytes().isEmpty()) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, shippingAddress_);
             }
-            for (int i = 0; i < products_.size(); i++) {
-                output.writeMessage(5, products_.get(i));
+            if (!getMobileNumberBytes().isEmpty()) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 5, mobileNumber_);
             }
             unknownFields.writeTo(output);
         }
 
-        @Override
+        @java.lang.Override
         public int getSerializedSize() {
             int size = memoizedSize;
             if (size != -1) return size;
 
             size = 0;
-            if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+            if (!getModelNumberBytes().isEmpty()) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, modelNumber_);
             }
-            if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            if (cost_ != 0) {
                 size += com.google.protobuf.CodedOutputStream
                         .computeInt32Size(2, cost_);
             }
-            if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            if (!getEmailBytes().isEmpty()) {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, email_);
             }
-            if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, shippingaddress_);
+            if (!getShippingAddressBytes().isEmpty()) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, shippingAddress_);
             }
-            for (int i = 0; i < products_.size(); i++) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(5, products_.get(i));
+            if (!getMobileNumberBytes().isEmpty()) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, mobileNumber_);
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
             return size;
         }
 
-        @Override
-        public boolean equals(final Object obj) {
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
             if (obj == this) {
                 return true;
             }
@@ -1835,59 +383,37 @@ public final class OrderProtos {
             com.ikea.bigdata.protos.OrderProtos.Order other = (com.ikea.bigdata.protos.OrderProtos.Order) obj;
 
             boolean result = true;
-            result = result && (hasId() == other.hasId());
-            if (hasId()) {
-                result = result && getId()
-                        .equals(other.getId());
-            }
-            result = result && (hasCost() == other.hasCost());
-            if (hasCost()) {
-                result = result && (getCost()
-                        == other.getCost());
-            }
-            result = result && (hasEmail() == other.hasEmail());
-            if (hasEmail()) {
-                result = result && getEmail()
-                        .equals(other.getEmail());
-            }
-            result = result && (hasShippingaddress() == other.hasShippingaddress());
-            if (hasShippingaddress()) {
-                result = result && getShippingaddress()
-                        .equals(other.getShippingaddress());
-            }
-            result = result && getProductsList()
-                    .equals(other.getProductsList());
+            result = result && getModelNumber()
+                    .equals(other.getModelNumber());
+            result = result && (getCost()
+                    == other.getCost());
+            result = result && getEmail()
+                    .equals(other.getEmail());
+            result = result && getShippingAddress()
+                    .equals(other.getShippingAddress());
+            result = result && getMobileNumber()
+                    .equals(other.getMobileNumber());
             result = result && unknownFields.equals(other.unknownFields);
             return result;
         }
 
-        @Override
+        @java.lang.Override
         public int hashCode() {
             if (memoizedHashCode != 0) {
                 return memoizedHashCode;
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
-            if (hasId()) {
-                hash = (37 * hash) + ID_FIELD_NUMBER;
-                hash = (53 * hash) + getId().hashCode();
-            }
-            if (hasCost()) {
-                hash = (37 * hash) + COST_FIELD_NUMBER;
-                hash = (53 * hash) + getCost();
-            }
-            if (hasEmail()) {
-                hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-                hash = (53 * hash) + getEmail().hashCode();
-            }
-            if (hasShippingaddress()) {
-                hash = (37 * hash) + SHIPPINGADDRESS_FIELD_NUMBER;
-                hash = (53 * hash) + getShippingaddress().hashCode();
-            }
-            if (getProductsCount() > 0) {
-                hash = (37 * hash) + PRODUCTS_FIELD_NUMBER;
-                hash = (53 * hash) + getProductsList().hashCode();
-            }
+            hash = (37 * hash) + MODELNUMBER_FIELD_NUMBER;
+            hash = (53 * hash) + getModelNumber().hashCode();
+            hash = (37 * hash) + COST_FIELD_NUMBER;
+            hash = (53 * hash) + getCost();
+            hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+            hash = (53 * hash) + getEmail().hashCode();
+            hash = (37 * hash) + SHIPPINGADDRESS_FIELD_NUMBER;
+            hash = (53 * hash) + getShippingAddress().hashCode();
+            hash = (37 * hash) + MOBILENUMBER_FIELD_NUMBER;
+            hash = (53 * hash) + getMobileNumber().hashCode();
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -1963,7 +489,7 @@ public final class OrderProtos {
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
 
-        @Override
+        @java.lang.Override
         public Builder newBuilderForType() { return newBuilder(); }
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
@@ -1971,34 +497,34 @@ public final class OrderProtos {
         public static Builder newBuilder(com.ikea.bigdata.protos.OrderProtos.Order prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
-        @Override
+        @java.lang.Override
         public Builder toBuilder() {
             return this == DEFAULT_INSTANCE
                     ? new Builder() : new Builder().mergeFrom(this);
         }
 
-        @Override
+        @java.lang.Override
         protected Builder newBuilderForType(
-                BuilderParent parent) {
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
             Builder builder = new Builder(parent);
             return builder;
         }
         /**
-         * Protobuf type {@code bigdata.workshop.Order}
+         * Protobuf type {@code com.ikea.bigdata.protos.Order}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:bigdata.workshop.Order)
+                // @@protoc_insertion_point(builder_implements:com.ikea.bigdata.protos.Order)
                 com.ikea.bigdata.protos.OrderProtos.OrderOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_descriptor;
+                return com.ikea.bigdata.protos.OrderProtos.internal_static_com_ikea_bigdata_protos_Order_descriptor;
             }
 
-            @Override
-            protected FieldAccessorTable
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_fieldAccessorTable
+                return com.ikea.bigdata.protos.OrderProtos.internal_static_com_ikea_bigdata_protos_Order_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
                                 com.ikea.bigdata.protos.OrderProtos.Order.class, com.ikea.bigdata.protos.OrderProtos.Order.Builder.class);
             }
@@ -2009,48 +535,43 @@ public final class OrderProtos {
             }
 
             private Builder(
-                    BuilderParent parent) {
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
                 super(parent);
                 maybeForceBuilderInitialization();
             }
             private void maybeForceBuilderInitialization() {
                 if (com.google.protobuf.GeneratedMessageV3
                         .alwaysUseFieldBuilders) {
-                    getProductsFieldBuilder();
                 }
             }
-            @Override
+            @java.lang.Override
             public Builder clear() {
                 super.clear();
-                id_ = "";
-                bitField0_ = (bitField0_ & ~0x00000001);
+                modelNumber_ = "";
+
                 cost_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000002);
+
                 email_ = "";
-                bitField0_ = (bitField0_ & ~0x00000004);
-                shippingaddress_ = "";
-                bitField0_ = (bitField0_ & ~0x00000008);
-                if (productsBuilder_ == null) {
-                    products_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000010);
-                } else {
-                    productsBuilder_.clear();
-                }
+
+                shippingAddress_ = "";
+
+                mobileNumber_ = "";
+
                 return this;
             }
 
-            @Override
+            @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return com.ikea.bigdata.protos.OrderProtos.internal_static_bigdata_workshop_Order_descriptor;
+                return com.ikea.bigdata.protos.OrderProtos.internal_static_com_ikea_bigdata_protos_Order_descriptor;
             }
 
-            @Override
+            @java.lang.Override
             public com.ikea.bigdata.protos.OrderProtos.Order getDefaultInstanceForType() {
                 return com.ikea.bigdata.protos.OrderProtos.Order.getDefaultInstance();
             }
 
-            @Override
+            @java.lang.Override
             public com.ikea.bigdata.protos.OrderProtos.Order build() {
                 com.ikea.bigdata.protos.OrderProtos.Order result = buildPartial();
                 if (!result.isInitialized()) {
@@ -2059,74 +580,51 @@ public final class OrderProtos {
                 return result;
             }
 
-            @Override
+            @java.lang.Override
             public com.ikea.bigdata.protos.OrderProtos.Order buildPartial() {
                 com.ikea.bigdata.protos.OrderProtos.Order result = new com.ikea.bigdata.protos.OrderProtos.Order(this);
-                int from_bitField0_ = bitField0_;
-                int to_bitField0_ = 0;
-                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-                    to_bitField0_ |= 0x00000001;
-                }
-                result.id_ = id_;
-                if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-                    to_bitField0_ |= 0x00000002;
-                }
+                result.modelNumber_ = modelNumber_;
                 result.cost_ = cost_;
-                if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-                    to_bitField0_ |= 0x00000004;
-                }
                 result.email_ = email_;
-                if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-                    to_bitField0_ |= 0x00000008;
-                }
-                result.shippingaddress_ = shippingaddress_;
-                if (productsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                        products_ = java.util.Collections.unmodifiableList(products_);
-                        bitField0_ = (bitField0_ & ~0x00000010);
-                    }
-                    result.products_ = products_;
-                } else {
-                    result.products_ = productsBuilder_.build();
-                }
-                result.bitField0_ = to_bitField0_;
+                result.shippingAddress_ = shippingAddress_;
+                result.mobileNumber_ = mobileNumber_;
                 onBuilt();
                 return result;
             }
 
-            @Override
+            @java.lang.Override
             public Builder clone() {
                 return (Builder) super.clone();
             }
-            @Override
+            @java.lang.Override
             public Builder setField(
                     com.google.protobuf.Descriptors.FieldDescriptor field,
-                    Object value) {
+                    java.lang.Object value) {
                 return (Builder) super.setField(field, value);
             }
-            @Override
+            @java.lang.Override
             public Builder clearField(
                     com.google.protobuf.Descriptors.FieldDescriptor field) {
                 return (Builder) super.clearField(field);
             }
-            @Override
+            @java.lang.Override
             public Builder clearOneof(
                     com.google.protobuf.Descriptors.OneofDescriptor oneof) {
                 return (Builder) super.clearOneof(oneof);
             }
-            @Override
+            @java.lang.Override
             public Builder setRepeatedField(
                     com.google.protobuf.Descriptors.FieldDescriptor field,
-                    int index, Object value) {
+                    int index, java.lang.Object value) {
                 return (Builder) super.setRepeatedField(field, index, value);
             }
-            @Override
+            @java.lang.Override
             public Builder addRepeatedField(
                     com.google.protobuf.Descriptors.FieldDescriptor field,
-                    Object value) {
+                    java.lang.Object value) {
                 return (Builder) super.addRepeatedField(field, value);
             }
-            @Override
+            @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
                 if (other instanceof com.ikea.bigdata.protos.OrderProtos.Order) {
                     return mergeFrom((com.ikea.bigdata.protos.OrderProtos.Order)other);
@@ -2138,75 +636,36 @@ public final class OrderProtos {
 
             public Builder mergeFrom(com.ikea.bigdata.protos.OrderProtos.Order other) {
                 if (other == com.ikea.bigdata.protos.OrderProtos.Order.getDefaultInstance()) return this;
-                if (other.hasId()) {
-                    bitField0_ |= 0x00000001;
-                    id_ = other.id_;
+                if (!other.getModelNumber().isEmpty()) {
+                    modelNumber_ = other.modelNumber_;
                     onChanged();
                 }
-                if (other.hasCost()) {
+                if (other.getCost() != 0) {
                     setCost(other.getCost());
                 }
-                if (other.hasEmail()) {
-                    bitField0_ |= 0x00000004;
+                if (!other.getEmail().isEmpty()) {
                     email_ = other.email_;
                     onChanged();
                 }
-                if (other.hasShippingaddress()) {
-                    bitField0_ |= 0x00000008;
-                    shippingaddress_ = other.shippingaddress_;
+                if (!other.getShippingAddress().isEmpty()) {
+                    shippingAddress_ = other.shippingAddress_;
                     onChanged();
                 }
-                if (productsBuilder_ == null) {
-                    if (!other.products_.isEmpty()) {
-                        if (products_.isEmpty()) {
-                            products_ = other.products_;
-                            bitField0_ = (bitField0_ & ~0x00000010);
-                        } else {
-                            ensureProductsIsMutable();
-                            products_.addAll(other.products_);
-                        }
-                        onChanged();
-                    }
-                } else {
-                    if (!other.products_.isEmpty()) {
-                        if (productsBuilder_.isEmpty()) {
-                            productsBuilder_.dispose();
-                            productsBuilder_ = null;
-                            products_ = other.products_;
-                            bitField0_ = (bitField0_ & ~0x00000010);
-                            productsBuilder_ =
-                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                                            getProductsFieldBuilder() : null;
-                        } else {
-                            productsBuilder_.addAllMessages(other.products_);
-                        }
-                    }
+                if (!other.getMobileNumber().isEmpty()) {
+                    mobileNumber_ = other.mobileNumber_;
+                    onChanged();
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
             }
 
-            @Override
+            @java.lang.Override
             public final boolean isInitialized() {
-                if (!hasId()) {
-                    return false;
-                }
-                if (!hasCost()) {
-                    return false;
-                }
-                if (!hasShippingaddress()) {
-                    return false;
-                }
-                for (int i = 0; i < getProductsCount(); i++) {
-                    if (!getProducts(i).isInitialized()) {
-                        return false;
-                    }
-                }
                 return true;
             }
 
-            @Override
+            @java.lang.Override
             public Builder mergeFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2224,150 +683,128 @@ public final class OrderProtos {
                 }
                 return this;
             }
-            private int bitField0_;
 
-            private Object id_ = "";
+            private java.lang.Object modelNumber_ = "";
             /**
-             * <code>required string id = 1;</code>
+             * <code>string modelNumber = 1;</code>
              */
-            public boolean hasId() {
-                return ((bitField0_ & 0x00000001) == 0x00000001);
-            }
-            /**
-             * <code>required string id = 1;</code>
-             */
-            public String getId() {
-                Object ref = id_;
-                if (!(ref instanceof String)) {
+            public java.lang.String getModelNumber() {
+                java.lang.Object ref = modelNumber_;
+                if (!(ref instanceof java.lang.String)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        id_ = s;
-                    }
+                    java.lang.String s = bs.toStringUtf8();
+                    modelNumber_ = s;
                     return s;
                 } else {
-                    return (String) ref;
+                    return (java.lang.String) ref;
                 }
             }
             /**
-             * <code>required string id = 1;</code>
+             * <code>string modelNumber = 1;</code>
              */
             public com.google.protobuf.ByteString
-            getIdBytes() {
-                Object ref = id_;
+            getModelNumberBytes() {
+                java.lang.Object ref = modelNumber_;
                 if (ref instanceof String) {
                     com.google.protobuf.ByteString b =
                             com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    id_ = b;
+                                    (java.lang.String) ref);
+                    modelNumber_ = b;
                     return b;
                 } else {
                     return (com.google.protobuf.ByteString) ref;
                 }
             }
             /**
-             * <code>required string id = 1;</code>
+             * <code>string modelNumber = 1;</code>
              */
-            public Builder setId(
-                    String value) {
+            public Builder setModelNumber(
+                    java.lang.String value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000001;
-                id_ = value;
+
+                modelNumber_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required string id = 1;</code>
+             * <code>string modelNumber = 1;</code>
              */
-            public Builder clearId() {
-                bitField0_ = (bitField0_ & ~0x00000001);
-                id_ = getDefaultInstance().getId();
+            public Builder clearModelNumber() {
+
+                modelNumber_ = getDefaultInstance().getModelNumber();
                 onChanged();
                 return this;
             }
             /**
-             * <code>required string id = 1;</code>
+             * <code>string modelNumber = 1;</code>
              */
-            public Builder setIdBytes(
+            public Builder setModelNumberBytes(
                     com.google.protobuf.ByteString value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000001;
-                id_ = value;
+                checkByteStringIsUtf8(value);
+
+                modelNumber_ = value;
                 onChanged();
                 return this;
             }
 
             private int cost_ ;
             /**
-             * <code>required int32 cost = 2;</code>
-             */
-            public boolean hasCost() {
-                return ((bitField0_ & 0x00000002) == 0x00000002);
-            }
-            /**
-             * <code>required int32 cost = 2;</code>
+             * <code>int32 cost = 2;</code>
              */
             public int getCost() {
                 return cost_;
             }
             /**
-             * <code>required int32 cost = 2;</code>
+             * <code>int32 cost = 2;</code>
              */
             public Builder setCost(int value) {
-                bitField0_ |= 0x00000002;
+
                 cost_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required int32 cost = 2;</code>
+             * <code>int32 cost = 2;</code>
              */
             public Builder clearCost() {
-                bitField0_ = (bitField0_ & ~0x00000002);
+
                 cost_ = 0;
                 onChanged();
                 return this;
             }
 
-            private Object email_ = "";
+            private java.lang.Object email_ = "";
             /**
-             * <code>optional string email = 3;</code>
+             * <code>string email = 3;</code>
              */
-            public boolean hasEmail() {
-                return ((bitField0_ & 0x00000004) == 0x00000004);
-            }
-            /**
-             * <code>optional string email = 3;</code>
-             */
-            public String getEmail() {
-                Object ref = email_;
-                if (!(ref instanceof String)) {
+            public java.lang.String getEmail() {
+                java.lang.Object ref = email_;
+                if (!(ref instanceof java.lang.String)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        email_ = s;
-                    }
+                    java.lang.String s = bs.toStringUtf8();
+                    email_ = s;
                     return s;
                 } else {
-                    return (String) ref;
+                    return (java.lang.String) ref;
                 }
             }
             /**
-             * <code>optional string email = 3;</code>
+             * <code>string email = 3;</code>
              */
             public com.google.protobuf.ByteString
             getEmailBytes() {
-                Object ref = email_;
+                java.lang.Object ref = email_;
                 if (ref instanceof String) {
                     com.google.protobuf.ByteString b =
                             com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
+                                    (java.lang.String) ref);
                     email_ = b;
                     return b;
                 } else {
@@ -2375,373 +812,196 @@ public final class OrderProtos {
                 }
             }
             /**
-             * <code>optional string email = 3;</code>
+             * <code>string email = 3;</code>
              */
             public Builder setEmail(
-                    String value) {
+                    java.lang.String value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000004;
+
                 email_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>optional string email = 3;</code>
+             * <code>string email = 3;</code>
              */
             public Builder clearEmail() {
-                bitField0_ = (bitField0_ & ~0x00000004);
+
                 email_ = getDefaultInstance().getEmail();
                 onChanged();
                 return this;
             }
             /**
-             * <code>optional string email = 3;</code>
+             * <code>string email = 3;</code>
              */
             public Builder setEmailBytes(
                     com.google.protobuf.ByteString value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000004;
+                checkByteStringIsUtf8(value);
+
                 email_ = value;
                 onChanged();
                 return this;
             }
 
-            private Object shippingaddress_ = "";
+            private java.lang.Object shippingAddress_ = "";
             /**
-             * <code>required string shippingaddress = 4;</code>
+             * <code>string shippingAddress = 4;</code>
              */
-            public boolean hasShippingaddress() {
-                return ((bitField0_ & 0x00000008) == 0x00000008);
-            }
-            /**
-             * <code>required string shippingaddress = 4;</code>
-             */
-            public String getShippingaddress() {
-                Object ref = shippingaddress_;
-                if (!(ref instanceof String)) {
+            public java.lang.String getShippingAddress() {
+                java.lang.Object ref = shippingAddress_;
+                if (!(ref instanceof java.lang.String)) {
                     com.google.protobuf.ByteString bs =
                             (com.google.protobuf.ByteString) ref;
-                    String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        shippingaddress_ = s;
-                    }
+                    java.lang.String s = bs.toStringUtf8();
+                    shippingAddress_ = s;
                     return s;
                 } else {
-                    return (String) ref;
+                    return (java.lang.String) ref;
                 }
             }
             /**
-             * <code>required string shippingaddress = 4;</code>
+             * <code>string shippingAddress = 4;</code>
              */
             public com.google.protobuf.ByteString
-            getShippingaddressBytes() {
-                Object ref = shippingaddress_;
+            getShippingAddressBytes() {
+                java.lang.Object ref = shippingAddress_;
                 if (ref instanceof String) {
                     com.google.protobuf.ByteString b =
                             com.google.protobuf.ByteString.copyFromUtf8(
-                                    (String) ref);
-                    shippingaddress_ = b;
+                                    (java.lang.String) ref);
+                    shippingAddress_ = b;
                     return b;
                 } else {
                     return (com.google.protobuf.ByteString) ref;
                 }
             }
             /**
-             * <code>required string shippingaddress = 4;</code>
+             * <code>string shippingAddress = 4;</code>
              */
-            public Builder setShippingaddress(
-                    String value) {
+            public Builder setShippingAddress(
+                    java.lang.String value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000008;
-                shippingaddress_ = value;
+
+                shippingAddress_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required string shippingaddress = 4;</code>
+             * <code>string shippingAddress = 4;</code>
              */
-            public Builder clearShippingaddress() {
-                bitField0_ = (bitField0_ & ~0x00000008);
-                shippingaddress_ = getDefaultInstance().getShippingaddress();
+            public Builder clearShippingAddress() {
+
+                shippingAddress_ = getDefaultInstance().getShippingAddress();
                 onChanged();
                 return this;
             }
             /**
-             * <code>required string shippingaddress = 4;</code>
+             * <code>string shippingAddress = 4;</code>
              */
-            public Builder setShippingaddressBytes(
+            public Builder setShippingAddressBytes(
                     com.google.protobuf.ByteString value) {
                 if (value == null) {
                     throw new NullPointerException();
                 }
-                bitField0_ |= 0x00000008;
-                shippingaddress_ = value;
+                checkByteStringIsUtf8(value);
+
+                shippingAddress_ = value;
                 onChanged();
                 return this;
             }
 
-            private java.util.List<Product> products_ =
-                    java.util.Collections.emptyList();
-            private void ensureProductsIsMutable() {
-                if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-                    products_ = new java.util.ArrayList<Product>(products_);
-                    bitField0_ |= 0x00000010;
+            private java.lang.Object mobileNumber_ = "";
+            /**
+             * <code>string mobileNumber = 5;</code>
+             */
+            public java.lang.String getMobileNumber() {
+                java.lang.Object ref = mobileNumber_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    mobileNumber_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
                 }
             }
+            /**
+             * <code>string mobileNumber = 5;</code>
+             */
+            public com.google.protobuf.ByteString
+            getMobileNumberBytes() {
+                java.lang.Object ref = mobileNumber_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    mobileNumber_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <code>string mobileNumber = 5;</code>
+             */
+            public Builder setMobileNumber(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
 
-            private com.google.protobuf.RepeatedFieldBuilderV3<
-                    Product, Product.Builder, ProductOrBuilder> productsBuilder_;
+                mobileNumber_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>string mobileNumber = 5;</code>
+             */
+            public Builder clearMobileNumber() {
 
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public java.util.List<Product> getProductsList() {
-                if (productsBuilder_ == null) {
-                    return java.util.Collections.unmodifiableList(products_);
-                } else {
-                    return productsBuilder_.getMessageList();
-                }
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public int getProductsCount() {
-                if (productsBuilder_ == null) {
-                    return products_.size();
-                } else {
-                    return productsBuilder_.getCount();
-                }
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public com.ikea.bigdata.protos.OrderProtos.Order.Product getProducts(int index) {
-                if (productsBuilder_ == null) {
-                    return products_.get(index);
-                } else {
-                    return productsBuilder_.getMessage(index);
-                }
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder setProducts(
-                    int index, com.ikea.bigdata.protos.OrderProtos.Order.Product value) {
-                if (productsBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    ensureProductsIsMutable();
-                    products_.set(index, value);
-                    onChanged();
-                } else {
-                    productsBuilder_.setMessage(index, value);
-                }
+                mobileNumber_ = getDefaultInstance().getMobileNumber();
+                onChanged();
                 return this;
             }
             /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
+             * <code>string mobileNumber = 5;</code>
              */
-            public Builder setProducts(
-                    int index, com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder builderForValue) {
-                if (productsBuilder_ == null) {
-                    ensureProductsIsMutable();
-                    products_.set(index, builderForValue.build());
-                    onChanged();
-                } else {
-                    productsBuilder_.setMessage(index, builderForValue.build());
+            public Builder setMobileNumberBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
                 }
+                checkByteStringIsUtf8(value);
+
+                mobileNumber_ = value;
+                onChanged();
                 return this;
             }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder addProducts(com.ikea.bigdata.protos.OrderProtos.Order.Product value) {
-                if (productsBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    ensureProductsIsMutable();
-                    products_.add(value);
-                    onChanged();
-                } else {
-                    productsBuilder_.addMessage(value);
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder addProducts(
-                    int index, com.ikea.bigdata.protos.OrderProtos.Order.Product value) {
-                if (productsBuilder_ == null) {
-                    if (value == null) {
-                        throw new NullPointerException();
-                    }
-                    ensureProductsIsMutable();
-                    products_.add(index, value);
-                    onChanged();
-                } else {
-                    productsBuilder_.addMessage(index, value);
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder addProducts(
-                    com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder builderForValue) {
-                if (productsBuilder_ == null) {
-                    ensureProductsIsMutable();
-                    products_.add(builderForValue.build());
-                    onChanged();
-                } else {
-                    productsBuilder_.addMessage(builderForValue.build());
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder addProducts(
-                    int index, com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder builderForValue) {
-                if (productsBuilder_ == null) {
-                    ensureProductsIsMutable();
-                    products_.add(index, builderForValue.build());
-                    onChanged();
-                } else {
-                    productsBuilder_.addMessage(index, builderForValue.build());
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder addAllProducts(
-                    Iterable<? extends Product> values) {
-                if (productsBuilder_ == null) {
-                    ensureProductsIsMutable();
-                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
-                            values, products_);
-                    onChanged();
-                } else {
-                    productsBuilder_.addAllMessages(values);
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder clearProducts() {
-                if (productsBuilder_ == null) {
-                    products_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000010);
-                    onChanged();
-                } else {
-                    productsBuilder_.clear();
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public Builder removeProducts(int index) {
-                if (productsBuilder_ == null) {
-                    ensureProductsIsMutable();
-                    products_.remove(index);
-                    onChanged();
-                } else {
-                    productsBuilder_.remove(index);
-                }
-                return this;
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder getProductsBuilder(
-                    int index) {
-                return getProductsFieldBuilder().getBuilder(index);
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public com.ikea.bigdata.protos.OrderProtos.Order.ProductOrBuilder getProductsOrBuilder(
-                    int index) {
-                if (productsBuilder_ == null) {
-                    return products_.get(index);  } else {
-                    return productsBuilder_.getMessageOrBuilder(index);
-                }
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public java.util.List<? extends ProductOrBuilder>
-            getProductsOrBuilderList() {
-                if (productsBuilder_ != null) {
-                    return productsBuilder_.getMessageOrBuilderList();
-                } else {
-                    return java.util.Collections.unmodifiableList(products_);
-                }
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder addProductsBuilder() {
-                return getProductsFieldBuilder().addBuilder(
-                        com.ikea.bigdata.protos.OrderProtos.Order.Product.getDefaultInstance());
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public com.ikea.bigdata.protos.OrderProtos.Order.Product.Builder addProductsBuilder(
-                    int index) {
-                return getProductsFieldBuilder().addBuilder(
-                        index, com.ikea.bigdata.protos.OrderProtos.Order.Product.getDefaultInstance());
-            }
-            /**
-             * <code>repeated .bigdata.workshop.Order.Product products = 5;</code>
-             */
-            public java.util.List<Product.Builder>
-            getProductsBuilderList() {
-                return getProductsFieldBuilder().getBuilderList();
-            }
-            private com.google.protobuf.RepeatedFieldBuilderV3<
-                    Product, Product.Builder, ProductOrBuilder>
-            getProductsFieldBuilder() {
-                if (productsBuilder_ == null) {
-                    productsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                            Product, Product.Builder, ProductOrBuilder>(
-                            products_,
-                            ((bitField0_ & 0x00000010) == 0x00000010),
-                            getParentForChildren(),
-                            isClean());
-                    products_ = null;
-                }
-                return productsBuilder_;
-            }
-            @Override
+            @java.lang.Override
             public final Builder setUnknownFields(
                     final com.google.protobuf.UnknownFieldSet unknownFields) {
-                return super.setUnknownFields(unknownFields);
+                return super.setUnknownFieldsProto3(unknownFields);
             }
 
-            @Override
+            @java.lang.Override
             public final Builder mergeUnknownFields(
                     final com.google.protobuf.UnknownFieldSet unknownFields) {
                 return super.mergeUnknownFields(unknownFields);
             }
 
 
-            // @@protoc_insertion_point(builder_scope:bigdata.workshop.Order)
+            // @@protoc_insertion_point(builder_scope:com.ikea.bigdata.protos.Order)
         }
 
-        // @@protoc_insertion_point(class_scope:bigdata.workshop.Order)
+        // @@protoc_insertion_point(class_scope:com.ikea.bigdata.protos.Order)
         private static final com.ikea.bigdata.protos.OrderProtos.Order DEFAULT_INSTANCE;
         static {
             DEFAULT_INSTANCE = new com.ikea.bigdata.protos.OrderProtos.Order();
@@ -2751,9 +1011,9 @@ public final class OrderProtos {
             return DEFAULT_INSTANCE;
         }
 
-        @Deprecated public static final com.google.protobuf.Parser<Order>
+        private static final com.google.protobuf.Parser<Order>
                 PARSER = new com.google.protobuf.AbstractParser<Order>() {
-            @Override
+            @java.lang.Override
             public Order parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2766,12 +1026,12 @@ public final class OrderProtos {
             return PARSER;
         }
 
-        @Override
+        @java.lang.Override
         public com.google.protobuf.Parser<Order> getParserForType() {
             return PARSER;
         }
 
-        @Override
+        @java.lang.Override
         public com.ikea.bigdata.protos.OrderProtos.Order getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
@@ -2779,15 +1039,10 @@ public final class OrderProtos {
     }
 
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_bigdata_workshop_Order_descriptor;
+            internal_static_com_ikea_bigdata_protos_Order_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_bigdata_workshop_Order_fieldAccessorTable;
-    private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_bigdata_workshop_Order_Product_descriptor;
-    private static final
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_bigdata_workshop_Order_Product_fieldAccessorTable;
+            internal_static_com_ikea_bigdata_protos_Order_fieldAccessorTable;
 
     public static com.google.protobuf.Descriptors.FileDescriptor
     getDescriptor() {
@@ -2796,15 +1051,12 @@ public final class OrderProtos {
     private static  com.google.protobuf.Descriptors.FileDescriptor
             descriptor;
     static {
-        String[] descriptorData = {
-                "\n\010my.proto\022\020bigdata.workshop\"\362\001\n\005Order\022\n" +
-                        "\n\002id\030\001 \002(\t\022\014\n\004cost\030\002 \002(\005\022\r\n\005email\030\003 \001(\t\022" +
-                        "\027\n\017shippingaddress\030\004 \002(\t\0221\n\010products\030\005 \003" +
-                        "(\0132\037.bigdata.workshop.Order.Product\032t\n\007P" +
-                        "roduct\022\014\n\004name\030\001 \002(\t\022\014\n\004code\030\002 \002(\t\022\r\n\005pr" +
-                        "ice\030\003 \002(\005\022\023\n\013modelnumber\030\004 \002(\t\022\024\n\014manufa" +
-                        "cturer\030\005 \002(\t\022\023\n\013description\030\006 \001(\tB&\n\027com" +
-                        ".ikea.bigdata.protosB\013OrderProtos"
+        java.lang.String[] descriptorData = {
+                "\n\010my.proto\022\027com.ikea.bigdata.protos\"h\n\005O" +
+                        "rder\022\023\n\013modelNumber\030\001 \001(\t\022\014\n\004cost\030\002 \001(\005\022" +
+                        "\r\n\005email\030\003 \001(\t\022\027\n\017shippingAddress\030\004 \001(\t\022" +
+                        "\024\n\014mobileNumber\030\005 \001(\tB&\n\027com.ikea.bigdat" +
+                        "a.protosB\013OrderProtosb\006proto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2818,18 +1070,12 @@ public final class OrderProtos {
                 .internalBuildGeneratedFileFrom(descriptorData,
                         new com.google.protobuf.Descriptors.FileDescriptor[] {
                         }, assigner);
-        internal_static_bigdata_workshop_Order_descriptor =
+        internal_static_com_ikea_bigdata_protos_Order_descriptor =
                 getDescriptor().getMessageTypes().get(0);
-        internal_static_bigdata_workshop_Order_fieldAccessorTable = new
+        internal_static_com_ikea_bigdata_protos_Order_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_bigdata_workshop_Order_descriptor,
-                new String[] { "Id", "Cost", "Email", "Shippingaddress", "Products", });
-        internal_static_bigdata_workshop_Order_Product_descriptor =
-                internal_static_bigdata_workshop_Order_descriptor.getNestedTypes().get(0);
-        internal_static_bigdata_workshop_Order_Product_fieldAccessorTable = new
-                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_bigdata_workshop_Order_Product_descriptor,
-                new String[] { "Name", "Code", "Price", "Modelnumber", "Manufacturer", "Description", });
+                internal_static_com_ikea_bigdata_protos_Order_descriptor,
+                new java.lang.String[] { "ModelNumber", "Cost", "Email", "ShippingAddress", "MobileNumber", });
     }
 
     // @@protoc_insertion_point(outer_class_scope)
