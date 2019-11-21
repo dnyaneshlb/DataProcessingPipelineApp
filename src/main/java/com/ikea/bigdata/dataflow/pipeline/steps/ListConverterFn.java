@@ -13,13 +13,15 @@ public class ListConverterFn extends DoFn<OrderProtos.Order, String> {
     public void processElement(@Element OrderProtos.Order order, OutputReceiver<String> out) {
         log.debug("Creating comma separated list of order attributes");
         StringBuilder orderString = new StringBuilder();
-        orderString.append(order.getId())
+        orderString.append(order.getModelNumber())
                 .append(Constants.SEPARATOR_COMMA)
-                .append(order.getShippingaddress())
+                .append(order.getShippingAddress())
                 .append(Constants.SEPARATOR_COMMA)
                 .append(order.getCost())
                 .append(Constants.SEPARATOR_COMMA)
-                .append(order.getEmail());
+                .append(order.getEmail())
+                .append(Constants.SEPARATOR_COMMA)
+                .append(order.getMobileNumber());
         out.output(orderString.toString());
     }
 }

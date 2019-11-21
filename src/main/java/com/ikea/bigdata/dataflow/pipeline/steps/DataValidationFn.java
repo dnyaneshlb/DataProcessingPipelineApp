@@ -15,20 +15,21 @@ public class DataValidationFn extends DoFn<OrderProtos.Order, OrderProtos.Order>
     /*
      * Counter tracking the number of output Pub/Sub messages after validation has failed.
      */
-    private static final Counter OUTPUT_COUNTER = Metrics.counter(DataValidationFn.class, "validation-failed-messages");
+    private static final Counter ERROR_COUNTER = Metrics.counter(DataValidationFn.class, "validation-failed-messages");
 
 
     @ProcessElement
     public void processElement(@Element OrderProtos.Order order, ProcessContext out) {
         if (Objects.nonNull(order)) {
-            if (!StringUtils.isEmpty(order.getId())
-                    && !StringUtils.isEmpty(order.getShippingaddress())
+            if (!StringUtils.isEmpty(order.getModelNumber())
+                    && !StringUtils.isEmpty(order.getShippingAddress())
                     && !StringUtils.isEmpty(order.getEmail())
-                    && (order.getCost() > 0 && order.getCost() < 8000)) {
+                    && (order.getCost() > 0 && order.getCost() < 8000)
+                    && order.getMobileNumber().length() == 10) {
                 out.output(Constants.VALID_DATA, order);
             } else {
+                ERROR_COUNTER.inc();
                 log.error("Data received is corrupt. Sending it back to dead letter queue for reprocessing");
-                OUTPUT_COUNTER.inc();
                 out.output(Constants.INVALID_DATA, order);
             }
         }

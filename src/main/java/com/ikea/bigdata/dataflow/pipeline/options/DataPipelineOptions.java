@@ -8,12 +8,12 @@ import org.apache.beam.sdk.options.Validation;
 public interface DataPipelineOptions extends GcpOptions {
 
     @Default.Integer(1)
-    @Description("Size of window for emitting results")
+    @Description("Size of window in minutes for emitting results")
     int getWindowSize();
     void setWindowSize(int windowSize);
 
     @Default.Integer(10)
-    @Description("Minimum elements in a window before triggering transformations")
+    @Description("Minimum number of elements in a window before triggering transformations")
     int getLeastElementsInWindow();
     void setLeastElementsInWindow(int leastElementsInWindow);
 
