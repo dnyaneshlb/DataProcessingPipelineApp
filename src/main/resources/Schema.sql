@@ -1,13 +1,17 @@
-CREATE TABLE public."Orders"
+-- Table: public."OrderDetails"
+
+-- DROP TABLE public."OrderDetails";
+
+CREATE TABLE public."OrderDetails"
 (
-    id integer NOT NULL,
-    cost integer NOT NULL,
-    email character[],
-    shipping_address character[] NOT NULL,
-    PRIMARY KEY (id)
+    model_number text COLLATE pg_catalog."default",
+    cost bigint,
+    email text COLLATE pg_catalog."default",
+    shipping_address text COLLATE pg_catalog."default",
+    mobile_number text COLLATE pg_catalog."default"
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE public."Orders"
+ALTER TABLE public."OrderDetails"
     OWNER to postgres;
