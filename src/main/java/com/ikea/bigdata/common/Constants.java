@@ -1,8 +1,11 @@
 package com.ikea.bigdata.common;
 
 import com.ikea.bigdata.protos.OrderProtos;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.beam.sdk.values.TupleTag;
 
+@NoArgsConstructor(access= AccessLevel.PRIVATE)
 public class Constants {
 
     /**
@@ -10,13 +13,8 @@ public class Constants {
      * Note it is different from what we use for side input
      */
     public static final TupleTag<OrderProtos.Order> VALID_DATA = new TupleTag<OrderProtos.Order>(){};
-    public static final TupleTag<OrderProtos.Order> INVALID_DATA = new TupleTag<OrderProtos.Order>(){};
     public static final String ATTRIBUTE_ID = "Order";
     public static final String CSV_HEADER_MOBILE_NUMBER = "Mobile Number";
-
-    private Constants(){
-
-    }
 
     public static final String INSERT_ORDER_QUERY = "INSERT INTO public.\"OrderDetails\"(\n" +
             "\tmodel_number, cost, email, shipping_address, mobile_number)\n" +

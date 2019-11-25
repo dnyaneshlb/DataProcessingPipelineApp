@@ -5,7 +5,10 @@ import com.ikea.bigdata.dataflow.pipeline.options.DataPipelineOptions;
 import com.ikea.bigdata.dataflow.pipeline.steps.DataValidationFn;
 import com.ikea.bigdata.dataflow.pipeline.steps.ListConverterFn;
 import com.ikea.bigdata.exception.DataPipelineException;
+import com.ikea.bigdata.exception.FailureMetaData;
 import com.ikea.bigdata.protos.OrderProtos;
+import com.ikea.bigdata.util.CommonUtil;
+import com.ikea.bigdata.util.LogPipelineFailures;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.coders.Coder;
@@ -21,7 +24,6 @@ import org.apache.beam.sdk.values.PCollectionTuple;
 import org.apache.beam.sdk.values.TupleTagList;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.Duration;
-import org.joda.time.Instant;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -60,15 +62,17 @@ public class DataflowPipelineBuilder implements Serializable {
         } catch (Exception e) {
             log.error("Error in processing event. Message : {}", e.getMessage());
             //TODO : send failed message to new pubsub topic
+            FailureMetaData failure = CommonUtil.getDataValidationFailureResponse(DataValidationFn.class.toString(),
+                    "System Error", e.getMessage());
+            //LogPipelineFailures.logPipelineFailuresQueue(options.getFailureDataTopic(), Create.OfValueProvider(failure, ));
         }
-        log.debug("Data processed successfully.");
         return pipeline;
     }
 
     /**
      * Read pubsub events stream and apply windowing.
-     * @param options
-     * @param pipeline
+     * @param options pipeline options
+     * @param pipeline a pipeline
      * @return a PCollection of <Code>Order<Code/> for next transformation.
      */
     private PCollection<OrderProtos.Order> readEvents(DataPipelineOptions options, Pipeline pipeline) {
@@ -146,7 +150,7 @@ public class DataflowPipelineBuilder implements Serializable {
         try {
             PCollectionTuple taggedEvents = events
                     .apply(ParDo.of(new DataValidationFn()).withOutputTags(Constants.VALID_DATA,
-                            TupleTagList.of(Constants.INVALID_DATA)));
+                            TupleTagList.of(LogPipelineFailures.FAILURE_TAG)));
             PCollection<Void> dbWriteResults = taggedEvents
                     .get(Constants.VALID_DATA)
                     .apply("Save Event to Database",
@@ -166,27 +170,11 @@ public class DataflowPipelineBuilder implements Serializable {
                                     .withRetryStrategy(new JdbcIO.DefaultRetryStrategy())
                                     .withResults());
 
-            processBadData(taggedEvents, options);
+            LogPipelineFailures.logPipelineFailuresQueue(options.getFailureDataTopic(), taggedEvents.get(LogPipelineFailures.FAILURE_TAG));
             return dbWriteResults;
         } catch (Exception e) {
             log.error("Exception while saving data into database with message as {} and cause as {} ", e.getMessage(), e.getCause());
             throw new DataPipelineException("Exception while saving data into database with message as " + e.getMessage());
-        }
-    }
-
-    /**
-     * This method sends bad data to user configured topic so that it can be processed later.
-     * @param taggedEvents
-     * @param options
-     */
-    private void processBadData(PCollectionTuple taggedEvents, DataPipelineOptions options) {
-        if(taggedEvents.has(Constants.INVALID_DATA)) {
-            PCollection<OrderProtos.Order> badData = taggedEvents.get(Constants.INVALID_DATA);
-            badData.apply(PubsubIO.writeProtos(OrderProtos.Order.class)
-                    .to(options.getFailureDataTopic())
-                    .withIdAttribute("Validation-failed-orders")
-                    .withTimestampAttribute(String.valueOf(Instant.now().getMillis()))
-            );
         }
     }
 }

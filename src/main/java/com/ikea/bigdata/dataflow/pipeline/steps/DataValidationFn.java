@@ -2,6 +2,8 @@ package com.ikea.bigdata.dataflow.pipeline.steps;
 
 import com.ikea.bigdata.common.Constants;
 import com.ikea.bigdata.protos.OrderProtos;
+import com.ikea.bigdata.util.CommonUtil;
+import com.ikea.bigdata.util.LogPipelineFailures;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.beam.sdk.metrics.Counter;
 import org.apache.beam.sdk.metrics.Metrics;
@@ -30,7 +32,9 @@ public class DataValidationFn extends DoFn<OrderProtos.Order, OrderProtos.Order>
             } else {
                 ERROR_COUNTER.inc();
                 log.error("Data received is corrupt. Sending it back to dead letter queue for reprocessing");
-                out.output(Constants.INVALID_DATA, order);
+                out.output(LogPipelineFailures.FAILURE_TAG,
+                        CommonUtil.getDataValidationFailureResponse(DataValidationFn.class.toString(),
+                                "Business Validation Failed", order.toString()));
             }
         }
     }
