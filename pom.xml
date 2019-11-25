@@ -20,10 +20,14 @@
         <common.io.version>2.6</common.io.version>
         <cloud.pubsub.version>1.86.0</cloud.pubsub.version>
         <junit.vesion>4.12</junit.vesion>
+        <hamrest-version>1.3</hamrest-version>
         <slf4j.version>1.7.25</slf4j.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
-        <jacoco.exclusions>**/*Application*.class,**/constants/*,
-            **/entities/**,**/FailureMetaData*.class,
+        <jacoco.exclusions>
+            **/*Application*.class,
+            **/constants/*,
+            **/entities/**,
+            **/FailureMetaData*.class,
             **/exception/*
         </jacoco.exclusions>
         <jacoco.minimumInstructionCoverage>0.900</jacoco.minimumInstructionCoverage>
@@ -212,6 +216,13 @@
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-pubsub</artifactId>
             <version>${cloud.pubsub.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>${hamrest-version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
