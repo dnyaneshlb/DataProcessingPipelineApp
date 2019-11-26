@@ -78,8 +78,8 @@ public class DataFlowPipelineBuilderTest {
         // To logs the failure / exception data
         arguments.put(Constants.RUNNER_KEY, Constants.RUNNER);
 
-        DataflowPipelineBuilder sut = new DataflowPipelineBuilder();
-        sut.createDataPipeline(
+        DataflowPipelineBuilder builder = new DataflowPipelineBuilder();
+        builder.createDataPipeline(
                 arguments.entrySet().stream()
                         .map(e -> String.format(Constants.PATTERN, e.getKey(), e.getValue()))
                         .toArray(String[]::new));

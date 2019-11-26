@@ -16,7 +16,10 @@ import org.apache.beam.sdk.extensions.protobuf.ProtoCoder;
 import org.apache.beam.sdk.io.TextIO;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;
 import org.apache.beam.sdk.io.jdbc.JdbcIO;
+import org.apache.beam.sdk.metrics.Counter;
+import org.apache.beam.sdk.metrics.Metrics;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
+import org.apache.beam.sdk.transforms.Create;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.transforms.windowing.*;
 import org.apache.beam.sdk.values.PCollection;
@@ -27,17 +30,19 @@ import org.joda.time.Duration;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
+import java.util.Arrays;
+
 /*
-    TODO :
-           Exception Handling
-           Use Merge statement instead of insert
+    TODO : Use Merge statement instead of insert
  */
 @Slf4j
 public class DataflowPipelineBuilder implements Serializable {
 
+    private static final Counter ERROR_COUNTER = Metrics.counter(DataflowPipelineBuilder.class, "failed-messages");
+
     /**
      *  Create a pipeline and validate options.
-     * @param args
+     * @param args pipeline args
      * @return a pipeline to run
      */
     public Pipeline createDataPipeline(String[] args) {
@@ -61,10 +66,11 @@ public class DataflowPipelineBuilder implements Serializable {
             emitToCSV(events, saveResults);
         } catch (Exception e) {
             log.error("Error in processing event. Message : {}", e.getMessage());
-            //TODO : send failed message to new pubsub topic
-            FailureMetaData failure = CommonUtil.getDataValidationFailureResponse(DataValidationFn.class.toString(),
+            FailureMetaData failure = CommonUtil.getDataValidationFailureResponse(DataflowPipelineBuilder.class.toString(),
                     "System Error", e.getMessage());
-            //LogPipelineFailures.logPipelineFailuresQueue(options.getFailureDataTopic(), Create.OfValueProvider(failure, ));
+            ERROR_COUNTER.inc();
+            LogPipelineFailures.logPipelineFailuresQueue(options.getFailureDataTopic(),
+                    pipeline.apply("log failures", Create.of(Arrays.asList(failure))));
         }
         return pipeline;
     }
