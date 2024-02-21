@@ -14,7 +14,7 @@
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <apache.beam.version>2.14.0</apache.beam.version>
         <apache.beam.jdbc.version>2.14.0</apache.beam.jdbc.version>
-        <postgres.sql.version>42.3.3</postgres.sql.version>
+        <postgres.sql.version>42.7.2</postgres.sql.version>
         <lombok.version>1.18.4</lombok.version>
         <commons.lang3.version>3.9</commons.lang3.version>
         <common.io.version>2.7</common.io.version>
